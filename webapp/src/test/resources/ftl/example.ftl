@@ -1,1 +1,1 @@
-<example>${bla}</example>
+<example>${remedi}</example>
