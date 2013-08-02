@@ -41,7 +41,6 @@ class ReportController {
         if (sd > ed) {
             throw new Exception("Error: The \"From\" date must be earlier than the \"To\" date.")
         } else {
-            //System.out.println("${external.base.url}/service/ussdHits");
             def hits = get("${externalBaseUrl}/service/ussdHits", [startDate: sd.format("MM/dd/yy hh:mm aa"), endDate: ed.format("MM/dd/yy hh:mm aa")])
             model.put("hits", hits)
             return "reports/ussdHits";
