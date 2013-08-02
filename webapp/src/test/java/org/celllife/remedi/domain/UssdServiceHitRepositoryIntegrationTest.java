@@ -86,7 +86,7 @@ public class UssdServiceHitRepositoryIntegrationTest {
 
         @Test
         public void testFindTotalHits() {
-            Iterable<UssdHitsDTO> result = ussdHitsStoreRepository.findTotalHits();
+            Iterable<UssdHitsDTO> result = ussdHitsStoreRepository.findTotalHits(yesterday, new Date());
             System.out.println(result);
         }
 

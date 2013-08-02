@@ -21,7 +21,7 @@ public class UssdHitsApplicationServiceImpl implements UssdHitsApplicationServic
 
     public Collection<UssdHitsDTO> getUssdHits(Date startDate, Date endDate) {
 
-        return ussdServiceHitRepository.findTotalHits();
+        return ussdServiceHitRepository.findTotalHits(startDate, endDate);
 
     }
 
