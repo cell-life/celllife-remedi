@@ -1,6 +1,6 @@
 package org.celllife.remedi.domain;
 
-public class ServiceHitsDTO {
+public class UssdHitsDTO {
 
     private int serviceId;
 
@@ -10,11 +10,11 @@ public class ServiceHitsDTO {
 
     private long smsHits;
 
-    protected ServiceHitsDTO() {
+    protected UssdHitsDTO() {
 
     }
 
-    public ServiceHitsDTO(int serviceId, String service, long serviceHits, long smsHits) {
+    public UssdHitsDTO(int serviceId, String service, long serviceHits, long smsHits) {
         this.serviceId = serviceId;
         this.service = service;
         this.serviceHits = serviceHits;
