@@ -1,12 +1,13 @@
 package org.celllife.remedi.application;
 
-import org.celllife.remedi.domain.UssdHitsDTO;
+import org.celllife.remedi.domain.UssdAllHitsDTO;
+import org.celllife.remedi.domain.UssdServiceHitsDTO;
 import org.celllife.remedi.domain.UssdServiceHitRepository;
+import org.celllife.remedi.domain.UssdThemeHitsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 /**
  * User: Kevin W. Sewell
@@ -19,9 +20,23 @@ public class UssdHitsApplicationServiceImpl implements UssdHitsApplicationServic
     @Autowired
     private UssdServiceHitRepository ussdServiceHitRepository;
 
-    public Collection<UssdHitsDTO> getUssdHits(Date startDate, Date endDate) {
+    public Collection<UssdAllHitsDTO> getUssdHits(Date startDate, Date endDate) {
 
-        return ussdServiceHitRepository.findTotalHits(startDate, endDate);
+        Collection<UssdAllHitsDTO> ussdAllHitsDTOs = new ArrayList<UssdAllHitsDTO>();
+
+        Collection<UssdServiceHitsDTO> ussdServiceHitsDT0s = ussdServiceHitRepository.findTotalHitsPerService(startDate,endDate);
+        for (UssdServiceHitsDTO ussdServiceHitsDTO : ussdServiceHitsDT0s) {
+            UssdAllHitsDTO ussdAllHitsDTO = new UssdAllHitsDTO(ussdServiceHitsDTO.getServiceId(), ussdServiceHitsDTO.getServiceTitle(), ussdServiceHitsDTO.getServiceHits(), ussdServiceHitsDTO.getSmsHits());
+            ussdAllHitsDTOs.add(ussdAllHitsDTO);
+        }
+
+        Collection<UssdThemeHitsDTO> ussdThemeHitsDTOs = ussdServiceHitRepository.findTotalHitsPerTheme(startDate,endDate);
+        for (UssdThemeHitsDTO ussdThemeHitsDTO : ussdThemeHitsDTOs) {
+            UssdAllHitsDTO ussdAllHitsDTO = new UssdAllHitsDTO(ussdThemeHitsDTO.getThemeId(), ussdThemeHitsDTO.getThemeTitle(), ussdThemeHitsDTO.getThemeHits(), 0);
+            ussdAllHitsDTOs.add(ussdAllHitsDTO);
+        }
+
+        return ussdAllHitsDTOs;
 
     }
 
