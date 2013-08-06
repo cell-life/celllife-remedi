@@ -19,11 +19,14 @@ public class UssdServiceHit {
     @Id
     private String id;
 
+    @Basic(optional=false)
     private String ussdSessionId;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Basic(optional=false)
     private Date date;
 
+    @Basic(optional=false)
     private String msisdn;
 
     private Integer mnoCode;
@@ -36,8 +39,10 @@ public class UssdServiceHit {
 
     private Integer smsId;
 
+    @Basic(optional=false)
     private Integer themeId;
 
+    @Basic(optional=false)
     private String themeTitle;
 
     public UssdServiceHit() {

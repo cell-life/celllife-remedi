@@ -43,15 +43,16 @@
         <tbody>
 
         <c:forEach items="${hits}" var="hit">
-
-        <script>
-            console.log(${hit.service});
-        </script>
-
+        <c:if test="${hit.theme == true}">
+            <tr style="background-color:#e9e9e9;font-weight:bold">
+        </c:if>
+        <c:if test="${hit.theme == false}">
             <tr>
-                <td>${hit.serviceName}</td>
-                <td>${hit.serviceHits}</td>
+        </c:if>
+                <td>${hit.screenTitle}</td>
+                <td>${hit.screenHits}</td>
                 <td>${hit.smsHits}</td>
+            </tr>
         </c:forEach>
 
         </tbody>
@@ -62,10 +63,6 @@
     <div class="footer">
         <p>&copy; Cell-Life (NPO) - 2013</p>
     </div>
-
-    <script>
-        console.log(${hits});
-    </script>
 
 </div>
 

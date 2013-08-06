@@ -1,9 +1,11 @@
 package org.celllife.remedi.application;
 
-import org.celllife.remedi.domain.UssdHitsDTO;
+import org.celllife.remedi.domain.UssdAllHitsDTO;
+import org.celllife.remedi.domain.UssdServiceHitsDTO;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: Kevin W. Sewell
@@ -12,6 +14,6 @@ import java.util.Date;
  */
 public interface UssdHitsApplicationService {
 
-    public Collection<UssdHitsDTO> getUssdHits(Date startDate, Date endDate);
+    public List<UssdAllHitsDTO> getUssdHits(Date startDate, Date endDate);
 
 }

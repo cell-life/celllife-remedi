@@ -1,7 +1,8 @@
 package org.celllife.remedi.interfaces.service;
 
 import org.celllife.remedi.application.UssdHitsApplicationService;
-import org.celllife.remedi.domain.UssdHitsDTO;
+import org.celllife.remedi.domain.UssdAllHitsDTO;
+import org.celllife.remedi.domain.UssdServiceHitsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class UssdHitsController {
             value = "/service/ussdHits",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Collection<UssdHitsDTO> findClinicAveragesBySubDistrict(@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) {
+    public Collection<UssdAllHitsDTO> findUssdHits(@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) {
 
         return ussdHitsApplicationService.getUssdHits(startDate,endDate);
 
