@@ -10,8 +10,6 @@ public class UssdThemeHitsDTO {
 
     private long themeHits;
 
-    //private List<UssdServiceHitsDTO> ussdServiceHitsDTOList;
-
     protected UssdThemeHitsDTO() {
 
     }
@@ -45,13 +43,5 @@ public class UssdThemeHitsDTO {
     public void setThemeTitle(String themeTitle) {
         this.themeTitle = themeTitle;
     }
-
-    /*public List<UssdServiceHitsDTO> getUssdServiceHitsDTOList() {
-        return ussdServiceHitsDTOList;
-    }
-
-    public void setUssdServiceHitsDTOList(List<UssdServiceHitsDTO> ussdServiceHitsDTOList) {
-        this.ussdServiceHitsDTOList = ussdServiceHitsDTOList;
-    } */
 
 }

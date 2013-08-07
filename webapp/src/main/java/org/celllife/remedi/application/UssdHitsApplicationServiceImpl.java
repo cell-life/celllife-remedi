@@ -23,21 +23,18 @@ public class UssdHitsApplicationServiceImpl implements UssdHitsApplicationServic
     public List<UssdAllHitsDTO> getUssdHits(Date startDate, Date endDate) {
 
         List<UssdAllHitsDTO> ussdAllHitsDTOs = new ArrayList<UssdAllHitsDTO>();
-
         Collection<UssdThemeHitsDTO> ussdThemeHitsDTOs = ussdServiceHitRepository.findTotalHitsPerTheme(startDate,endDate);
-
-        Collection<UssdServiceHitsDTO> ussdServiceHitsDT0s = ussdServiceHitRepository.findTotalHitsPerService(startDate,endDate);
+        Collection<UssdServiceHitsDTO> ussdServiceHitsDT0s;
 
         for (UssdThemeHitsDTO ussdThemeHitsDTO : ussdThemeHitsDTOs) {
+
             UssdAllHitsDTO ussdAllHitsDTO = new UssdAllHitsDTO(ussdThemeHitsDTO.getThemeId(), ussdThemeHitsDTO.getThemeTitle(), ussdThemeHitsDTO.getThemeHits(), 0, true);
             ussdAllHitsDTOs.add(ussdAllHitsDTO);
 
-            //TODO: Need to do this in a more efficient way. Fetch by service or something.
+            ussdServiceHitsDT0s = ussdServiceHitRepository.findTotalHitsPerServiceInTheme(startDate,endDate,ussdThemeHitsDTO.getThemeId());
             for (UssdServiceHitsDTO ussdServiceHitsDTO : ussdServiceHitsDT0s) {
-                if (ussdServiceHitsDTO.getThemeId() == ussdThemeHitsDTO.getThemeId()) {
                     UssdAllHitsDTO ussdAllHitsDTO2 = new UssdAllHitsDTO(ussdServiceHitsDTO.getServiceId(), ussdServiceHitsDTO.getServiceTitle(), ussdServiceHitsDTO.getServiceHits(), ussdServiceHitsDTO.getSmsHits(), false);
                     ussdAllHitsDTOs.add(ussdAllHitsDTO2);
-                }
             }
         }
 

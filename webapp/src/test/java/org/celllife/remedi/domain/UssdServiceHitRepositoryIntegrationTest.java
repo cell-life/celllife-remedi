@@ -115,6 +115,13 @@ public class UssdServiceHitRepositoryIntegrationTest {
         }
 
         @Test
+        public void testFindTotalHitsPerServiceInTheme() {
+            Collection<UssdServiceHitsDTO> result = ussdHitsStoreRepository.findTotalHitsPerServiceInTheme(yesterday, new Date(), 1);
+            Assert.assertEquals(2, result.size());
+            Assert.assertNotNull(result.iterator().next().getServiceHits());
+        }
+
+        @Test
         public void testFindTotalHitsPerTheme() {
             Collection<UssdThemeHitsDTO> result = ussdHitsStoreRepository.findTotalHitsPerTheme(yesterday, new Date());
             Assert.assertEquals(2,result.size());
