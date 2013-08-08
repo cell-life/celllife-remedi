@@ -9,11 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-/**
- * User: Kevin W. Sewell
- * Date: 2013-04-04
- * Time: 08h57
- */
 @Service
 public class UssdHitsApplicationServiceImpl implements UssdHitsApplicationService {
 

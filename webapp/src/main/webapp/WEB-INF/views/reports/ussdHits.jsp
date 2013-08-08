@@ -8,10 +8,21 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Cell Life Remedi</title>
+
     <c:set var="url">${pageContext.request.requestURL}</c:set>
     <base href="${fn:substring(url, 0, fn:length(url) - fn:length(pageContext.request.requestURI))}${pageContext.request.contextPath}/" />
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="resources/js/jquery-1.9.1.min.js"></script>
+
+    <link href="resources/css/bootstrap-3.0.0.css" rel="stylesheet" media="screen">
+    <link href="resources/css/datatables_bootstrap.css" rel="stylesheet">
+    <link href="resources/css/jquery-ui-1.10.2.css" rel="stylesheet">
+    <link href="resources/css/remedi.css" rel="stylesheet">
+
+    <script type="text/javascript" src="resources/js/jquery-1.8.2.js"></script> <!-- This is the version of jQuery that came with DataTables -->
+    <script type="text/javascript" src="resources/js/bootstrap-3.0.0.min.js"></script>
+    <script type="text/javascript" src="resources/js/jquery-ui-1.9.1.min.js"></script>
+    <script type="text/javascript" src="resources/js/jquery.dataTables-1.9.4.js"></script>
+    <script type="text/javascript" src="resources/js/datatables_bootstrap-3.js"></script>
+
 </head>
 
 <body>
@@ -30,9 +41,15 @@
 
     <hr>
 
+    <div class = "row">
+
     <h3>Aggregated Data</h3>
 
-    <table class="table table-bordered" >
+    <jsp:include page="../includes/datepicker.jsp">
+        <jsp:param name="windowLocation" value="" />
+    </jsp:include>
+
+    <table class="table table-bordered" id="remediTable">
         <thead>
         <tr>
             <th>Theme / Service</th>
@@ -57,6 +74,8 @@
 
         </tbody>
     </table>
+
+    </div>
 
     <hr>
 

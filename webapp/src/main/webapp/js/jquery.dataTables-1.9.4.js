@@ -31,7 +31,7 @@
 	// Define as an AMD module if possible
 	if ( typeof define === 'function' && define.amd )
 	{
-		define( ['jquery'], factory );
+		define( ['jquery-1.8.2'], factory );
 	}
 	/* Define using browser globals otherwise
 	 * Prevent multiple instantiations if the script is loaded twice
@@ -6900,7 +6900,7 @@
 	 * Version string for plug-ins to check compatibility. Allowed format is
 	 * a.b.c.d.e where: a:int, b:int, c:int, d:string(dev|beta), e:int. d and
 	 * e are optional
-	 *  @member
+	 *  @member blank
 	 *  @type string
 	 *  @default Version number
 	 */
