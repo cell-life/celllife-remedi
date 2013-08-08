@@ -29,14 +29,14 @@ class ReportController {
         if (startDate.equals(null))
             sd = new Date(946684800) //This is Unix time for 01 Jan 2000
         else
-            sd = new SimpleDateFormat("dd/MM/yyyy hh:mm aa").parse(startDate)
+            sd = new SimpleDateFormat("dd/MM/yyyy").parse(startDate)
 
         Date ed
 
         if (endDate.equals(null))
             ed = new Date()
         else
-            ed = new SimpleDateFormat("dd/MM/yyyy hh:mm aa").parse(endDate)
+            ed = new SimpleDateFormat("dd/MM/yyyy").parse(endDate)
 
         if (sd > ed) {
             throw new Exception("Error: The \"From\" date must be earlier than the \"To\" date.")

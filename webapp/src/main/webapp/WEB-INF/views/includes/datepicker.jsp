@@ -47,7 +47,7 @@
     }
 
     function filterButtonClicked() {
-        if (($("#date1").val().length != 19) || ($("#date2").val().length != 19)) {
+        if (($("#date1").val().length != 10) || ($("#date2").val().length != 10)) {
             $("#dateTooShortError").show();
             return false;
         } else if ($("#date1").datepicker('getDate') > $("#date2").datepicker('getDate')) {
@@ -57,7 +57,7 @@
             $("#dateTooShortError").hide();
             $("#dateError").hide();
             $("#dateError").hide();
-            window.location = "<%= request.getParameter("windowLocation") %>" + "&startDate=" + $('#date1').val() + "&endDate=" + $('#date2').val();
+            window.location = "reports/ussdHits" + "?startDate=" + $('#date1').val() + "&endDate=" + $('#date2').val();
         }
     }
 
@@ -71,6 +71,6 @@
 
 <div class="row">
      <div id="dateTooShortError" class="alert alert-block alert-error" style="display:none;margin:20px;">
-         <p>One or both of the dates are invalid. Format must be "dd/MM/yyyy hh:mm aa".</p>
+         <p>One or both of the dates are invalid. Format must be "dd/MM/yyyy".</p>
      </div>
 </div>
