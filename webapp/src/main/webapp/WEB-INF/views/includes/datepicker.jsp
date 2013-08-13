@@ -14,6 +14,7 @@
                 '<label>To:</label>' +
                 '<input id="date2" type="text" name="date2" value="${param.endDate}" class="form-control form-remedi-date" />' +
                 '<button id="filter" type="button" class="btn btn-default" onclick="filterButtonClicked()">Apply</button>' +
+                '<button id="download" type="button" class="btn btn-primary pull-right" onclick="exportButtonClicked()">Export</button>' +
                 '</fieldset>' +
                 '</form>' );
     });
@@ -58,6 +59,19 @@
             $("#dateError").hide();
             $("#dateError").hide();
             window.location = "reports/ussdHits" + "?startDate=" + $('#date1').val() + "&endDate=" + $('#date2').val();
+        }
+    }
+
+    function exportButtonClicked() {
+        if (($("#date1").val().length != 10) || ($("#date2").val().length != 10)) {
+            $("#dateTooShortError").show();
+        } else if ($("#date1").datepicker('getDate') > $("#date2").datepicker('getDate')) {
+            $("#dateError").show();
+        }
+        else {
+            $("#dateTooShortError").hide();
+            $("#dateError").hide();
+            window.location = 'service/ussdHits/csvFormat' + '?' + 'startDate=' + $("#date1").val() + '&endDate=' + $("#date2").val();
         }
     }
 
