@@ -4,6 +4,7 @@
     $(document).ready(function () {
         $('#remediTable').dataTable({
             "bSort": false,
+            "iDisplayLength": 50,
             "sDom": 'lfr<"toolbar">tip'
         });
         $("div.toolbar").html('' +
