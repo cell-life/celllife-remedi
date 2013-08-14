@@ -2,13 +2,13 @@ package org.celllife.remedi.domain.datamart;
 
 public class UssdPageVisitsDTO {
 
-    private int screenId;
+    private int pageId;
 
-    private String screenTitle;
+    private String pageTitle;
 
-    private long screenVisits;
+    private long pageVisits;
 
-    private long smsHits;
+    private long smses;
 
     private boolean isTheme;
 
@@ -16,44 +16,44 @@ public class UssdPageVisitsDTO {
 
     }
 
-    public UssdPageVisitsDTO(int screenId, String screenTitle, long screenVisits, long smsHits, boolean isTheme) {
-        this.screenId = screenId;
-        this.screenTitle = screenTitle;
-        this.screenVisits = screenVisits;
-        this.smsHits = smsHits;
+    public UssdPageVisitsDTO(int pageId, String pageTitle, long pageVisits, long smses, boolean isTheme) {
+        this.pageId = pageId;
+        this.pageTitle = pageTitle;
+        this.pageVisits = pageVisits;
+        this.smses = smses;
         this.isTheme = isTheme;
     }
 
-    public long getScreenVisits() {
-        return screenVisits;
+    public long getPageVisits() {
+        return pageVisits;
     }
 
-    public void setScreenVisits(long screenVisits) {
-        this.screenVisits = screenVisits;
+    public void setPageVisits(long pageVisits) {
+        this.pageVisits = pageVisits;
     }
 
-    public long getSmsHits() {
-        return smsHits;
+    public long getSmses() {
+        return smses;
     }
 
-    public void setSmsHits(long smsHits) {
-        this.smsHits = smsHits;
+    public void setSmses(long smses) {
+        this.smses = smses;
     }
 
-    public int getScreenId() {
-        return screenId;
+    public int getPageId() {
+        return pageId;
     }
 
-    public void setScreenId(int screenId) {
-        this.screenId = screenId;
+    public void setPageId(int pageId) {
+        this.pageId = pageId;
     }
 
-    public String getScreenTitle() {
-        return screenTitle;
+    public String getPageTitle() {
+        return pageTitle;
     }
 
-    public void setScreenTitle(String screenTitle) {
-        this.screenTitle = screenTitle;
+    public void setPageTitle(String pageTitle) {
+        this.pageTitle = pageTitle;
     }
 
     public boolean isTheme() {

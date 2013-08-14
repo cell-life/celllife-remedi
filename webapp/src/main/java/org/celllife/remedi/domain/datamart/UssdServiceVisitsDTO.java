@@ -8,7 +8,7 @@ public class UssdServiceVisitsDTO {
 
     private long serviceVisits;
 
-    private long smsHits;
+    private long smses;
 
     private int themeId;
 
@@ -16,11 +16,11 @@ public class UssdServiceVisitsDTO {
 
     }
 
-    public UssdServiceVisitsDTO(int serviceId, String service, long serviceVisits, long smsHits, int themeId) {
+    public UssdServiceVisitsDTO(int serviceId, String service, long serviceVisits, long smses, int themeId) {
         this.serviceId = serviceId;
         this.serviceTitle = service;
         this.serviceVisits = serviceVisits;
-        this.smsHits = smsHits;
+        this.smses = smses;
         this.themeId = themeId;
     }
 
@@ -32,12 +32,12 @@ public class UssdServiceVisitsDTO {
         this.serviceVisits = serviceVisits;
     }
 
-    public long getSmsHits() {
-        return smsHits;
+    public long getSmses() {
+        return smses;
     }
 
-    public void setSmsHits(long smsHits) {
-        this.smsHits = smsHits;
+    public void setSmses(long smses) {
+        this.smses = smses;
     }
 
     public int getServiceId() {

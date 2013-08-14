@@ -520,6 +520,14 @@
             <artifactId>milyn-smooks-all</artifactId>
         </dependency>
 
+        <!-- Super CSV -->
+
+        <dependency>
+            <groupId>net.sf.supercsv</groupId>
+            <artifactId>super-csv</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
