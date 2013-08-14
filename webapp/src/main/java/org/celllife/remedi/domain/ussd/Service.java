@@ -10,7 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 /**
- * Service entity for the USSD endpoint. Contains information about which service a user requested information about.
+ * Service entity for the USSD endpoint. Contains information about which
+ * service a user requested information about.
  */
 @Entity
 public class Service implements Serializable {
@@ -18,24 +19,24 @@ public class Service implements Serializable {
 	private static final long serialVersionUID = 5524061530856185789L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private Long id;
 
 	private Long serviceId;
-    private String serviceTitle;
-    private String serviceDescription;
-    
-    @OneToOne
-    @JoinColumn(name="theme")
-    private Theme theme;
+	private String serviceTitle;
+	private String serviceDescription;
 
-    public Long getId() {
-        return id;
-    }
+	@OneToOne
+	@JoinColumn(name = "theme")
+	private Theme theme;
 
-    public void setId(Long id) {
-        this.id = id;
-    }  
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Long getServiceId() {
 		return serviceId;
@@ -50,7 +51,7 @@ public class Service implements Serializable {
 	}
 
 	public void setServiceTitle(String serviceTitle) {
-		System.out.println("service title="+serviceTitle);
+		System.out.println("service title=" + serviceTitle);
 		this.serviceTitle = serviceTitle;
 	}
 
@@ -72,9 +73,8 @@ public class Service implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Service [id=" + id + ",serviceId=" + serviceId + ", serviceTitle="
-				+ serviceTitle + ", serviceDescription=" + serviceDescription
-				+ ", theme=" + theme.getId()
-				+ "]";
+		return "Service [id=" + id + ",serviceId=" + serviceId
+				+ ", serviceTitle=" + serviceTitle + ", serviceDescription="
+				+ serviceDescription + ", theme=" + theme.getId() + "]";
 	}
 }

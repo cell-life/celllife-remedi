@@ -24,79 +24,75 @@ public class Request implements Serializable {
 	private static final long serialVersionUID = 2447706927325734934L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private Long id;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "id", column = @Column(name = "ussdSessionId")),
-            @AttributeOverride(name = "startDateTime", column = @Column(name = "ussdSessionStartDateTime")),
-            @AttributeOverride(name = "endDateTime", column = @Column(name = "ussdSessionEndDateTime"))
-    })
-    private UssdSession ussdSession;
+	@Embedded
+	@AttributeOverrides({
+			@AttributeOverride(name = "id", column = @Column(name = "ussdSessionId")),
+			@AttributeOverride(name = "startDateTime", column = @Column(name = "ussdSessionStartDateTime")),
+			@AttributeOverride(name = "endDateTime", column = @Column(name = "ussdSessionEndDateTime")) })
+	private UssdSession ussdSession;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "msisdn", column = @Column(name = "userMsisdn")),
-            @AttributeOverride(name = "mnoCode", column = @Column(name = "userMnoCode"))
-    })
-    private User user;
+	@Embedded
+	@AttributeOverrides({
+			@AttributeOverride(name = "msisdn", column = @Column(name = "userMsisdn")),
+			@AttributeOverride(name = "mnoCode", column = @Column(name = "userMnoCode")) })
+	private User user;
 
-    @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "version", column = @Column(name = "contentVersion"))
-    })
-    private Content content;
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "version", column = @Column(name = "contentVersion")) })
+	private Content content;
 
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="request")
-    private List<Theme> themes;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "request")
+	private List<Theme> themes;
 
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="id")
-    private Sms sms;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id")
+	private Sms sms;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public UssdSession getUssdSession() {
-        return ussdSession;
-    }
+	public UssdSession getUssdSession() {
+		return ussdSession;
+	}
 
-    public void setUssdSession(UssdSession ussdSession) {
-        this.ussdSession = ussdSession;
-    }
+	public void setUssdSession(UssdSession ussdSession) {
+		this.ussdSession = ussdSession;
+	}
 
-    public User getUser() {
-        return user;
-    }
+	public User getUser() {
+		return user;
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-    public Content getContent() {
-        return content;
-    }
+	public Content getContent() {
+		return content;
+	}
 
-    public void setContent(Content content) {
-        this.content = content;
-    }
+	public void setContent(Content content) {
+		this.content = content;
+	}
 
-    public List<Theme> getThemes() {
-        return themes;
-    }
+	public List<Theme> getThemes() {
+		return themes;
+	}
 
-    public void setThemes(List<Theme> themes) {
-    	System.out.println("themes:"+themes+","+themes.size());
-        this.themes = themes;
-    }
+	public void setThemes(List<Theme> themes) {
+		System.out.println("themes:" + themes + "," + themes.size());
+		this.themes = themes;
+	}
 
-    public Sms getSms() {
+	public Sms getSms() {
 		return sms;
 	}
 
