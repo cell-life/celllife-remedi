@@ -37,6 +37,12 @@ class ReportController {
             ed = new Date()
         else {
             ed = new SimpleDateFormat("dd/MM/yyyy").parse(endDate)
+
+            Calendar c = Calendar.getInstance()
+            c.setTime(ed)
+            c.set(Calendar.HOUR_OF_DAY,24)
+            c.set(Calendar.MINUTE,00)
+            ed = c.getTime() // set the time to midnight
         }
 
         if (sd > ed) {
