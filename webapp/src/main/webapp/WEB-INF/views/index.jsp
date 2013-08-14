@@ -17,34 +17,7 @@
 
 <div class="container">
 
-    <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="j_spring_cas_security_logout">Logout</a>
-        </ul>
-        <h2><img class="ohsc-logo" src="resources/img/logo.png"></h2>
-    </div>
-
-    <h2>INDEX PAGE - this is wrong!</h2>
-
-    <hr>
-
-    <h3>Aggregated Data</h3>
-
-        <table class="table table-bordered" >
-            <thead>
-            <tr>
-                <th>Theme / Service</th>
-                <th>Page Views</th>
-                <th>SMSs</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-
-    <hr>
+    <h2>INDEX PAGE - NOT USED FOR NOW</h2>
 
     <div class="footer">
         <p>&copy; Cell-Life (NPO) - 2013</p>

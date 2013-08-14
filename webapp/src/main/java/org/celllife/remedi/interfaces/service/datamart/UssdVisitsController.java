@@ -1,5 +1,6 @@
 package org.celllife.remedi.interfaces.service.datamart;
 
+import au.com.bytecode.opencsv.CSVWriter;
 import org.celllife.remedi.application.datamart.UssdVisitsApplicationService;
 import org.celllife.remedi.domain.datamart.UssdPageVisitsDTO;
 import org.slf4j.Logger;
@@ -12,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.supercsv.cellprocessor.Optional;
+import org.supercsv.cellprocessor.constraint.UniqueHashCode;
+import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.util.Collection;
-import java.util.Date;
+import java.io.*;
+import java.util.*;
 
 @Controller
 public class UssdVisitsController {
@@ -44,30 +48,46 @@ public class UssdVisitsController {
     public void getVisits(
             @RequestParam("startDate") @DateTimeFormat(pattern="dd/MM/yyyy") Date startDate,
             @RequestParam("endDate") @DateTimeFormat(pattern="dd/MM/yyyy") Date endDate,
-            HttpServletResponse response) {
+            HttpServletResponse response) throws IOException {
 
-        //Collection<UssdClinicLocatorDTO> results = mmcHitsService.getHits(startDate, endDate);
-
-        String results = "test,test,test";
+        Calendar c = Calendar.getInstance();
+        c.setTime(endDate);
+        c.set(Calendar.HOUR_OF_DAY,24);
+        c.set(Calendar.MINUTE,00);
+        endDate = c.getTime(); // set the time to midnight
 
         response.setContentType("text/csv;charset=utf-8");
         response.setHeader("Content-Disposition","attachment; filename=\"pageviews.csv\"");
 
-        OutputStreamWriter out = null;
+        ICsvBeanWriter writer = null;
         try {
-            out = new OutputStreamWriter(new BufferedOutputStream(response.getOutputStream()));
-            out.write(results);
+            writer = new CsvBeanWriter(new OutputStreamWriter(new BufferedOutputStream(response.getOutputStream())), CsvPreference.STANDARD_PREFERENCE);
+
+            Collection<UssdPageVisitsDTO> ussdPageVisitsDTOs = ussdVisitsApplicationService.getUssdVisits(startDate, endDate);
+
+            final String[] header = new String[] { "pageTitle", "pageVisits", "smses" };
+            final CellProcessor[] processors = getProcessors();
+            writer.writeHeader(header);
+            for( final UssdPageVisitsDTO ussdPageVisitsDTO : ussdPageVisitsDTOs ) {
+                writer.write(ussdPageVisitsDTO, header, processors);
+            }
         } catch (IOException e) {
             throw new RuntimeException("Could not create CSV file.", e);
         } finally {
-            try {
-                if (out != null) {
-                    out.flush();
-                    out.close();
-                }
-            } catch (IOException e) {
-                log.warn("Ignoring IOException thrown when trying to close and flush the OutputStream during CVS creation.",e.getMessage());
+            if( writer != null ) {
+                writer.close();
             }
+
         }
+
+    }
+
+    private static CellProcessor[] getProcessors() {
+        final CellProcessor[] processors = new CellProcessor[] {
+                new Optional(),
+                new Optional(),
+                new Optional()
+        };
+        return processors;
     }
 }

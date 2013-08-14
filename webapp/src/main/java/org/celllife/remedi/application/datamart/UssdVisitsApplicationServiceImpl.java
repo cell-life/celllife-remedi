@@ -27,7 +27,7 @@ public class UssdVisitsApplicationServiceImpl implements UssdVisitsApplicationSe
 
             Collection<UssdServiceVisitsDTO> ussdServiceVisitsDTOs = ussdVisitsStoreRepository.findTotalVisitsPerServiceInTheme(startDate, endDate, ussdThemeVisitsDTO.getThemeId());
             for (UssdServiceVisitsDTO ussdServiceVisitsDTO : ussdServiceVisitsDTOs) {
-                ussdPageVisitsDTO = new UssdPageVisitsDTO(ussdServiceVisitsDTO.getServiceId(), ussdServiceVisitsDTO.getServiceTitle(), ussdServiceVisitsDTO.getServiceVisits(), ussdServiceVisitsDTO.getSmsHits(), false);
+                ussdPageVisitsDTO = new UssdPageVisitsDTO(ussdServiceVisitsDTO.getServiceId(), ussdServiceVisitsDTO.getServiceTitle(), ussdServiceVisitsDTO.getServiceVisits(), ussdServiceVisitsDTO.getSmses(), false);
                 ussdPageVisitsDTOs.add(ussdPageVisitsDTO);
             }
         }

@@ -66,9 +66,9 @@
         <c:if test="${visit.theme == false}">
             <tr>
         </c:if>
-                <td>${visit.screenTitle}</td>
-                <td>${visit.screenVisits}</td>
-                <td>${visit.smsHits}</td>
+                <td>${visit.pageTitle}</td>
+                <td>${visit.pageVisits}</td>
+                <td>${visit.smses}</td>
             </tr>
         </c:forEach>
 
