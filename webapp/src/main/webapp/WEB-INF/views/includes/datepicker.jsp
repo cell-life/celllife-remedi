@@ -58,7 +58,7 @@
             $("#dateTooShortError").hide();
             $("#dateError").hide();
             $("#dateError").hide();
-            window.location = "reports/ussdHits" + "?startDate=" + $('#date1').val() + "&endDate=" + $('#date2').val();
+            window.location = "reports/ussdVisits" + "?startDate=" + $('#date1').val() + "&endDate=" + $('#date2').val();
         }
     }
 
@@ -71,7 +71,7 @@
         else {
             $("#dateTooShortError").hide();
             $("#dateError").hide();
-            window.location = 'service/ussdHits/csvFormat' + '?' + 'startDate=' + $("#date1").val() + '&endDate=' + $("#date2").val();
+            window.location = 'service/ussdVisits/csvFormat' + '?' + 'startDate=' + $("#date1").val() + '&endDate=' + $("#date2").val();
         }
     }
 

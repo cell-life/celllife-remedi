@@ -1,31 +1,29 @@
-package org.celllife.remedi.domain;
+package org.celllife.remedi.domain.datamart;
 
-import java.util.List;
-
-public class UssdThemeHitsDTO {
+public class UssdThemeVisitsDTO {
 
     private int themeId;
 
     private String themeTitle;
 
-    private long themeHits;
+    private long themeVisits;
 
-    protected UssdThemeHitsDTO() {
+    protected UssdThemeVisitsDTO() {
 
     }
 
-    public UssdThemeHitsDTO(int themeId, String themeTitle, long themeHits) {
+    public UssdThemeVisitsDTO(int themeId, String themeTitle, long themeVisits) {
         this.themeId = themeId;
         this.themeTitle = themeTitle;
-        this.themeHits = themeHits;
+        this.themeVisits = themeVisits;
     }
 
-    public long getThemeHits() {
-        return themeHits;
+    public long getThemeVisits() {
+        return themeVisits;
     }
 
-    public void setThemeHits(long themeHits) {
-        this.themeHits = themeHits;
+    public void setThemeVisits(long themeVisits) {
+        this.themeVisits = themeVisits;
     }
 
     public int getThemeId() {

@@ -1,4 +1,4 @@
-package org.celllife.remedi.domain;
+package org.celllife.remedi.domain.datamart;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
  */
 @Entity
 @Cacheable
-public class UssdServiceHit {
+public class UssdPageVisit {
 
     public String getId() {
         return id;
@@ -45,7 +45,7 @@ public class UssdServiceHit {
     @Basic(optional=false)
     private String themeTitle;
 
-    public UssdServiceHit() {
+    public UssdPageVisit() {
 
     }
 

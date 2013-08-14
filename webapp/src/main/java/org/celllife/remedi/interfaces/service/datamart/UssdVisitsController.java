@@ -1,8 +1,7 @@
-package org.celllife.remedi.interfaces.service;
+package org.celllife.remedi.interfaces.service.datamart;
 
-import org.celllife.remedi.application.UssdHitsApplicationService;
-import org.celllife.remedi.domain.UssdAllHitsDTO;
-import org.celllife.remedi.domain.UssdServiceHitsDTO;
+import org.celllife.remedi.application.datamart.UssdVisitsApplicationService;
+import org.celllife.remedi.domain.datamart.UssdPageVisitsDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,32 +17,31 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
 @Controller
-public class UssdHitsController {
+public class UssdVisitsController {
 
     @Autowired
-    private UssdHitsApplicationService ussdHitsApplicationService;
+    private UssdVisitsApplicationService ussdVisitsApplicationService;
 
-    private static Logger log = LoggerFactory.getLogger(UssdHitsController.class);
+    private static Logger log = LoggerFactory.getLogger(UssdVisitsController.class);
 
     @ResponseBody
     @RequestMapping(
-            value = "/service/ussdHits",
+            value = "/service/ussdVisits",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Collection<UssdAllHitsDTO> findUssdHits(@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) {
+    public Collection<UssdPageVisitsDTO> findUssdVisits(@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) {
 
-        return ussdHitsApplicationService.getUssdHits(startDate,endDate);
+        return ussdVisitsApplicationService.getUssdVisits(startDate, endDate);
 
     }
 
     @ResponseBody
-    @RequestMapping(value = "/service/ussdHits/csvFormat", method = RequestMethod.GET)
-    public void getMmcHits(
+    @RequestMapping(value = "/service/ussdVisits/csvFormat", method = RequestMethod.GET)
+    public void getVisits(
             @RequestParam("startDate") @DateTimeFormat(pattern="dd/MM/yyyy") Date startDate,
             @RequestParam("endDate") @DateTimeFormat(pattern="dd/MM/yyyy") Date endDate,
             HttpServletResponse response) {

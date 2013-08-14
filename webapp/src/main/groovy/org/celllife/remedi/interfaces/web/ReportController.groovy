@@ -19,11 +19,11 @@ class ReportController {
 
     @RequestMapping("/")
     def index(Model model) {
-        getUssdHits(null, null, model)
+        getUssdVisits(null, null, model)
     }
 
-    @RequestMapping(value="/reports/ussdHits", method = RequestMethod.GET)
-    def getUssdHits(@RequestParam(value = "startDate", required = false) String startDate, @RequestParam(value = "endDate", required = false) String endDate, Model model) {
+    @RequestMapping(value="/reports/ussdVisits", method = RequestMethod.GET)
+    def getUssdVisits(@RequestParam(value = "startDate", required = false) String startDate, @RequestParam(value = "endDate", required = false) String endDate, Model model) {
 
         Date sd
         if (startDate.equals(null))
@@ -35,15 +35,16 @@ class ReportController {
 
         if (endDate.equals(null))
             ed = new Date()
-        else
+        else {
             ed = new SimpleDateFormat("dd/MM/yyyy").parse(endDate)
+        }
 
         if (sd > ed) {
             throw new Exception("Error: The \"From\" date must be earlier than the \"To\" date.")
         } else {
-            def hits = get("${externalBaseUrl}/service/ussdHits", [startDate: sd.format("MM/dd/yy hh:mm aa"), endDate: ed.format("MM/dd/yy hh:mm aa")])
-            model.put("hits", hits)
-            return "reports/ussdHits";
+            def visits = get("${externalBaseUrl}/service/ussdVisits", [startDate: sd.format("MM/dd/yy hh:mm aa"), endDate: ed.format("MM/dd/yy hh:mm aa")])
+            model.put("visits", visits)
+            return "reports/ussdVisits";
         }
     }
 

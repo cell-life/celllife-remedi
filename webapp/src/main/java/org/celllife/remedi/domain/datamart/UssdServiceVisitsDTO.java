@@ -1,35 +1,35 @@
-package org.celllife.remedi.domain;
+package org.celllife.remedi.domain.datamart;
 
-public class UssdServiceHitsDTO {
+public class UssdServiceVisitsDTO {
 
     private int serviceId;
 
     private String serviceTitle;
 
-    private long serviceHits;
+    private long serviceVisits;
 
     private long smsHits;
 
     private int themeId;
 
-    protected UssdServiceHitsDTO() {
+    protected UssdServiceVisitsDTO() {
 
     }
 
-    public UssdServiceHitsDTO(int serviceId, String service, long serviceHits, long smsHits, int themeId) {
+    public UssdServiceVisitsDTO(int serviceId, String service, long serviceVisits, long smsHits, int themeId) {
         this.serviceId = serviceId;
         this.serviceTitle = service;
-        this.serviceHits = serviceHits;
+        this.serviceVisits = serviceVisits;
         this.smsHits = smsHits;
         this.themeId = themeId;
     }
 
-    public long getServiceHits() {
-        return serviceHits;
+    public long getServiceVisits() {
+        return serviceVisits;
     }
 
-    public void setServiceHits(long serviceHits) {
-        this.serviceHits = serviceHits;
+    public void setServiceVisits(long serviceVisits) {
+        this.serviceVisits = serviceVisits;
     }
 
     public long getSmsHits() {

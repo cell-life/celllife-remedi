@@ -59,16 +59,16 @@
         </thead>
         <tbody>
 
-        <c:forEach items="${hits}" var="hit">
-        <c:if test="${hit.theme == true}">
+        <c:forEach items="${visits}" var="visit">
+        <c:if test="${visit.theme == true}">
             <tr style="background-color:#e9e9e9;font-weight:bold">
         </c:if>
-        <c:if test="${hit.theme == false}">
+        <c:if test="${visit.theme == false}">
             <tr>
         </c:if>
-                <td>${hit.screenTitle}</td>
-                <td>${hit.screenHits}</td>
-                <td>${hit.smsHits}</td>
+                <td>${visit.screenTitle}</td>
+                <td>${visit.screenVisits}</td>
+                <td>${visit.smsHits}</td>
             </tr>
         </c:forEach>
 
