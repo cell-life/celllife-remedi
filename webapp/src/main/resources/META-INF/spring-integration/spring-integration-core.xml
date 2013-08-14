@@ -11,4 +11,23 @@
 
     <int:annotation-config/>
 
+    <int:channel id="aatRequestChannel"/>
+
+    <int:channel id="aatResponseChannel"/>
+
+    <int-http:inbound-gateway id="httpInbound"
+                              request-channel="aatRequestChannel"
+                              reply-channel="aatResponseChannel"
+                              name="/service/remediUssdSubmission"
+                              supported-methods="POST"/>
+
+    <int:service-activator id="remediUssdSubmissionIntegrationServiceActivator"
+                           input-channel="aatRequestChannel"
+                           output-channel="aatResponseChannel"
+                           ref="remediUssdSubmissionMediator"
+                           method="handleRemediUssdSubmission"/>
+
+    <int-jdbc:message-store id="messageStore"
+                            data-source="dataSource"/>
+
 </beans>

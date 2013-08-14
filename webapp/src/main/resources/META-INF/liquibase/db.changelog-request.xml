@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet author="dagmar" id="request-1">
+        <createTable tableName="request">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="content_version" type="VARCHAR(255)"/>
+            <column name="ussd_session_id" type="VARCHAR(255)"/>
+            <column name="ussd_session_start_date_time" type="DATETIME"/>
+            <column name="ussd_session_end_date_time" type="DATETIME"/>
+            <column name="user_msisdn" type="VARCHAR(255)"/>
+            <column name="user_mno_code" type="VARCHAR(255)"/>
+        </createTable>
+
+        <createTable tableName="theme">
+        	<column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="theme_id" type="BIGINT"/>
+            <column name="theme_title" type="VARCHAR(255)"/>
+            <column name="request" type="BIGINT"/>
+        </createTable>
+
+        <createTable tableName="service">
+        	<column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="service_id" type="BIGINT"/>
+            <column name="service_title" type="VARCHAR(63)"/>
+            <column name="service_description" type="VARCHAR(255)"/>
+            <column name="theme" type="BIGINT"/>
+        </createTable>
+
+        <createTable tableName="sms">
+        	<column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="service_id" type="BIGINT"/>
+            <column name="sms_id" type="BIGINT"/>
+            <column name="sms_text" type="VARCHAR(255)"/>
+            <column name="request" type="BIGINT"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="request"
+                                 baseTableName="theme"
+                                 constraintName="theme_constraint1"
+                                 referencedColumnNames="id"
+                                 referencedTableName="request"
+                                 referencesUniqueColumn="false"/>
+
+        <addForeignKeyConstraint baseColumnNames="theme"
+                                 baseTableName="service"
+                                 constraintName="service_constraint1"
+                                 referencedColumnNames="id"
+                                 referencedTableName="theme"
+                                 referencesUniqueColumn="false"/>
+
+        <addForeignKeyConstraint baseColumnNames="request"
+                                 baseTableName="sms"
+                                 constraintName="sms_constraint1"
+                                 referencedColumnNames="id"
+                                 referencedTableName="request"
+                                 referencesUniqueColumn="false"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -26,6 +26,9 @@
     <!-- Liquibase -->
 
     <logger name="liquibase" level="WARN" />
+    
+    
+    <!-- <logger name="org.milyn" level="TRACE" />-->
 
     <!-- Root -->
 

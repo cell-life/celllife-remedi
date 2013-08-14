@@ -9,6 +9,8 @@
 
     <include file="db.changelog-ussdpagevisit.xml" relativeToChangelogFile="true"/>
 
+    <include file="db.changelog-request.xml" relativeToChangelogFile="true"/>
+
     <!-- Cross Domain Constraints -->
 
     <include file="db.changelog-constraint.xml" relativeToChangelogFile="true"/>

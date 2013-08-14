@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd"
+                      xmlns:json="http://www.milyn.org/xsd/smooks/json-1.1.xsd"
+                      xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.4.xsd">
+
+    <json:reader rootName="root"/>
+
+    <resource-config selector="/root/RemediUssdSubmissionRequest">
+        <resource>org.milyn.delivery.DomModelCreator</resource>
+    </resource-config>
+
+    <!-- Java Beans -->
+
+    <jb:bean beanId="request"
+             class="org.celllife.remedi.domain.ussd.Request"
+             createOnElement="RemediUssdSubmissionRequest">
+        <jb:wiring property="user" beanIdRef="user"/>
+        <jb:wiring property="ussdSession" beanIdRef="ussdSession"/>
+        <jb:wiring property="content" beanIdRef="content"/>
+        <jb:wiring property="themes" beanIdRef="themes"/>
+        <jb:wiring property="sms" beanIdRef="sms"/>
+    </jb:bean>
+
+    <jb:bean beanId="ussdSession"
+             class="org.celllife.remedi.domain.ussd.UssdSession"
+             createOnElement="ussdSession">
+        <jb:value property="id" data="id"/>
+        <jb:value property="startDateTime" data="startDateTime" decoder="Date">
+            <jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+        </jb:value>
+        <jb:value property="endDateTime" data="endDateTime" decoder="Date">
+            <jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+        </jb:value>
+    </jb:bean>
+
+    <jb:bean beanId="user"
+             class="org.celllife.remedi.domain.ussd.User"
+             createOnElement="user">
+        <jb:value property="msisdn" data="msisdn"/>
+        <jb:value property="mnoCode" data="mnoCode"/>
+    </jb:bean>
+
+    <jb:bean beanId="content"
+             class="org.celllife.remedi.domain.ussd.Content"
+             createOnElement="content">
+        <jb:value property="version" data="version"/>
+    </jb:bean>
+    
+    <jb:bean beanId="themes"
+             class="java.util.ArrayList"
+             createOnElement="sessionData/pageVisits">
+
+        <jb:wiring beanType="org.celllife.remedi.domain.ussd.Theme"/>
+    </jb:bean>
+    
+    <jb:bean beanId="theme"
+             class="org.celllife.remedi.domain.ussd.Theme"
+             createOnElement="pageVisits/element">
+
+        <jb:value property="themeId" data="themeId"/>
+        <jb:value property="themeTitle" data="themeTitle"/>
+        <jb:wiring property="services" beanIdRef="services"/>
+        <jb:wiring property="request" beanIdRef="request"/>
+    </jb:bean>
+    
+    <jb:bean beanId="services"
+             class="java.util.ArrayList"
+             createOnElement="services">
+
+        <jb:wiring beanType="org.celllife.remedi.domain.ussd.Service"/>
+    </jb:bean>
+    
+    <jb:bean beanId="service"
+             class="org.celllife.remedi.domain.ussd.Service"
+             createOnElement="services/element">
+
+        <jb:value property="serviceId" data="serviceId"/>
+        <jb:value property="serviceTitle" data="serviceTitle"/>
+        <jb:value property="serviceDescription" data="serviceDescription"/>
+        <jb:wiring property="theme" beanIdRef="theme"/>
+    </jb:bean>
+
+    <jb:bean beanId="sms"
+             class="org.celllife.remedi.domain.ussd.Sms"
+             createOnElement="sessionData/sms">
+
+        <jb:value property="serviceId" data="serviceId"/>
+        <jb:value property="smsId" data="smsId"/>
+        <jb:value property="smsText" data="smsText"/>
+        <jb:wiring property="request" beanIdRef="request"/>
+    </jb:bean>
+
+</smooks-resource-list>

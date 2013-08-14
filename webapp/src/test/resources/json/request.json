@@ -1,0 +1,54 @@
+{
+    "RemediUssdSubmissionRequest": {
+        "ussdSession": {
+            "id": "1",
+            "string": "*130*555*1000#",
+            "startDateTime": "2012-01-01T20:00:00",
+            "endDateTime": "2012-01-01T20:00:00"
+        },
+        "user": {
+            "msisdn": "27721234567",
+            "mnoCode": "1"
+        },
+        "content": {
+            "version": "1.0"
+        },
+        "sessionData": {
+            "pageVisits": [
+                {
+                    "themeId": "2",                
+                    "themeTitle": "Pregnancy & childcare",
+                    "services": [
+                        {
+                            "serviceId": "25",
+                            "serviceTitle": "The Baby Club (SMS, mobi)",
+                            "serviceDescription": "Supports new & expectant parents every step of the way - info, weekly messages & more: SMS 32015 (R1 then FREE) thebabyapp.com"
+                         },
+                         {
+                            "serviceId": "24",
+                            "serviceTitle": "MAMA (SMS, quiz, mobi)",
+                            "serviceDescription": "1. MAMA Monday (quiz)\\n2. MAMA (mobi)\\n3. MAMA (SMSs for a year)\\n4. MAMA (SMSs for 5 months)"
+                        }
+                    ]
+                },
+                {
+                    "themeId": "1",                
+                    "themeTitle": "Sex & family planning",
+                    "services": [
+                        {
+                            "serviceId": "11",
+                            "serviceTitle": "smrtSex (Mxit, mobi)",
+                            "serviceDescription": "Free advice, info & support on sex & relationships: smrtsex.mobi Mxit: My Contacts>Apps>Apps by Category>Advice>smrtSex"
+                         }
+                    ]
+ 
+                }
+            ],
+            "sms": {
+                "serviceId": "24",
+                "smsId": "24",
+                "smsText": "On Mxit:Tradepost>Reach>Health>Babyinfo"
+            }
+        }
+    }
+}
