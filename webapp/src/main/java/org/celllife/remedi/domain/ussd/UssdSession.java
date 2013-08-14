@@ -7,7 +7,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * USSD Session entity for the USSD endpoint. Contains details about the session (times)
+ * USSD Session entity for the USSD endpoint. Contains details about the session
+ * (times)
  */
 @Embeddable
 public final class UssdSession implements Serializable {
@@ -16,35 +17,35 @@ public final class UssdSession implements Serializable {
 
 	private String id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date startDateTime;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date startDateTime;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date endDateTime;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date endDateTime;
 
-    public String getId() {
-        return id;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public Date getStartDateTime() {
-        return startDateTime;
-    }
+	public Date getStartDateTime() {
+		return startDateTime;
+	}
 
-    public void setStartDateTime(Date startDateTime) {
-        this.startDateTime = startDateTime;
-    }
+	public void setStartDateTime(Date startDateTime) {
+		this.startDateTime = startDateTime;
+	}
 
-    public Date getEndDateTime() {
-        return endDateTime;
-    }
+	public Date getEndDateTime() {
+		return endDateTime;
+	}
 
-    public void setEndDateTime(Date endDateTime) {
-        this.endDateTime = endDateTime;
-    }
+	public void setEndDateTime(Date endDateTime) {
+		this.endDateTime = endDateTime;
+	}
 
 	@Override
 	public String toString() {

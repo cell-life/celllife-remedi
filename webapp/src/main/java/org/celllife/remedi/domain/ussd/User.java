@@ -5,7 +5,8 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /**
- * User entity for the USSD endpoint. Contains details about the user - network operator and msisdn
+ * User entity for the USSD endpoint. Contains details about the user - network
+ * operator and msisdn
  */
 @Embeddable
 public final class User implements Serializable {
@@ -13,26 +14,26 @@ public final class User implements Serializable {
 	private static final long serialVersionUID = -6685209802082539168L;
 
 	@Basic
-    private String msisdn;
+	private String msisdn;
 
-    @Basic
-    private String mnoCode;
+	@Basic
+	private String mnoCode;
 
-    public String getMsisdn() {
-        return msisdn;
-    }
+	public String getMsisdn() {
+		return msisdn;
+	}
 
-    public void setMsisdn(String msisdn) {
-        this.msisdn = msisdn;
-    }
+	public void setMsisdn(String msisdn) {
+		this.msisdn = msisdn;
+	}
 
-    public String getMnoCode() {
-        return mnoCode;
-    }
+	public String getMnoCode() {
+		return mnoCode;
+	}
 
-    public void setMnoCode(String mnoCode) {
-        this.mnoCode = mnoCode;
-    }
+	public void setMnoCode(String mnoCode) {
+		this.mnoCode = mnoCode;
+	}
 
 	@Override
 	public String toString() {

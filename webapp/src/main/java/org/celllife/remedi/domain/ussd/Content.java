@@ -12,15 +12,15 @@ public final class Content implements Serializable {
 	private static final long serialVersionUID = 7446811257791848435L;
 
 	@Basic
-    private String version;
+	private String version;
 
-    public String getVersion() {
-        return version;
-    }
+	public String getVersion() {
+		return version;
+	}
 
-    public void setVersion(String version) {
-        this.version = version;
-    }
+	public void setVersion(String version) {
+		this.version = version;
+	}
 
 	@Override
 	public String toString() {

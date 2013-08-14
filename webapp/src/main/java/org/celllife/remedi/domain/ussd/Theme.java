@@ -13,38 +13,39 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
- * Theme (page visit) entity for the USSD endpoint. Contains information about the themes the user viewed
+ * Theme (page visit) entity for the USSD endpoint. Contains information about
+ * the themes the user viewed
  */
 @Entity
 public class Theme implements Serializable {
 
 	private static final long serialVersionUID = 7564371005698654945L;
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	private Long id;
 
 	private Long themeId;
-    private String themeTitle;  
-    
-    //@Fetch(FetchMode.JOIN)
-    //@ElementCollection(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "theme")
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="theme")
-    private List<Service> services;
-    
-    @ManyToOne
-    @JoinColumn(name="request")
-    private Request request;
+	private String themeTitle;
 
-    public Long getId() {
-        return id;
-    }
+	// @Fetch(FetchMode.JOIN)
+	// @ElementCollection(fetch = FetchType.EAGER)
+	// @JoinColumn(name = "theme")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "theme")
+	private List<Service> services;
 
-    public void setId(Long id) {
-        this.id = id;
-    }    
-    
+	@ManyToOne
+	@JoinColumn(name = "request")
+	private Request request;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Long getThemeId() {
 		return themeId;
 	}
@@ -58,7 +59,7 @@ public class Theme implements Serializable {
 	}
 
 	public void setThemeTitle(String themeTitle) {
-		System.out.println("theme title="+themeTitle);
+		System.out.println("theme title=" + themeTitle);
 		this.themeTitle = themeTitle;
 	}
 
@@ -67,7 +68,7 @@ public class Theme implements Serializable {
 	}
 
 	public void setServices(List<Service> services) {
-		System.out.println("services:"+services+","+services.size());
+		System.out.println("services:" + services + "," + services.size());
 		this.services = services;
 	}
 
