@@ -6,7 +6,8 @@
     <json:reader rootName="root"/>
 
     <resource-config selector="/root/RemediUssdSubmissionRequest">
-        <resource>org.milyn.delivery.DomModelCreator</resource>
+        <!-- <resource>org.milyn.delivery.DomModelCreator</resource>-->
+        <resource>org.celllife.remedi.domain.ussd.MyDomModelCreator</resource>
     </resource-config>
 
     <!-- Java Beans -->

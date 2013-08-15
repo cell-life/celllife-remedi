@@ -25,7 +25,7 @@ public class Theme implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	private Long themeId;
+	private String themeId;
 	private String themeTitle;
 
 	// @Fetch(FetchMode.JOIN)
@@ -46,11 +46,11 @@ public class Theme implements Serializable {
 		this.id = id;
 	}
 
-	public Long getThemeId() {
+	public String getThemeId() {
 		return themeId;
 	}
 
-	public void setThemeId(Long themeId) {
+	public void setThemeId(String themeId) {
 		this.themeId = themeId;
 	}
 
@@ -59,7 +59,6 @@ public class Theme implements Serializable {
 	}
 
 	public void setThemeTitle(String themeTitle) {
-		System.out.println("theme title=" + themeTitle);
 		this.themeTitle = themeTitle;
 	}
 
@@ -68,7 +67,6 @@ public class Theme implements Serializable {
 	}
 
 	public void setServices(List<Service> services) {
-		System.out.println("services:" + services + "," + services.size());
 		this.services = services;
 	}
 

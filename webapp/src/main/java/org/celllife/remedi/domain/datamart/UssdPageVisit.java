@@ -1,23 +1,28 @@
 package org.celllife.remedi.domain.datamart;
 
-import javax.persistence.*;
 import java.util.Date;
 
+import javax.persistence.Basic;
+import javax.persistence.Cacheable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 /**
- * Created By: Diné Bennett
- * Date: 7/31/13
- * Time: 12:37 PM
+ * Entity object containing the USSD Session data specifically flattened for use in reports.
+ *
+ * The data is extracted from the Entity object Request.
  */
 @Entity
 @Cacheable
 public class UssdPageVisit {
 
-    public String getId() {
-        return id;
-    }
-
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private Long id;
 
     @Basic(optional=false)
     private String ussdSessionId;
@@ -29,18 +34,18 @@ public class UssdPageVisit {
     @Basic(optional=false)
     private String msisdn;
 
-    private Integer mnoCode;
+    private String mnoCode;
 
-    private Integer contentVersion;
+    private String contentVersion;
 
-    private Integer serviceId;
+    private String serviceId;
 
     private String serviceTitle;
 
-    private Integer smsId;
+    private String smsId;
 
     @Basic(optional=false)
-    private Integer themeId;
+    private String themeId;
 
     @Basic(optional=false)
     private String themeTitle;
@@ -73,47 +78,51 @@ public class UssdPageVisit {
         this.msisdn = msisdn;
     }
 
-    public Integer getMnoCode() {
+    public String getMnoCode() {
         return mnoCode;
     }
 
-    public void setMnoCode(Integer mnoCode) {
+    public void setMnoCode(String mnoCode) {
         this.mnoCode = mnoCode;
     }
 
-    public Integer getContentVersion() {
+    public String getContentVersion() {
         return contentVersion;
     }
 
-    public void setContentVersion(Integer contentVersion) {
+    public void setContentVersion(String contentVersion) {
         this.contentVersion = contentVersion;
     }
 
-    public Integer getServiceId() {
+    public String getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(Integer serviceId) {
+    public void setServiceId(String serviceId) {
         this.serviceId = serviceId;
     }
 
-    public Integer getSmsId() {
+    public String getSmsId() {
         return smsId;
     }
 
-    public void setSmsId(Integer smsId) {
+    public void setSmsId(String smsId) {
         this.smsId = smsId;
     }
 
-    public Integer getThemeId() {
+    public String getThemeId() {
         return themeId;
     }
 
-    public void setThemeId(Integer themeId) {
+    public void setThemeId(String themeId) {
         this.themeId = themeId;
     }
 
-    public void setId(String id) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -133,5 +142,13 @@ public class UssdPageVisit {
         this.themeTitle = themeTitle;
     }
 
-
+	@Override
+	public String toString() {
+		return "UssdPageVisit [id=" + id + ", ussdSessionId=" + ussdSessionId
+				+ ", date=" + date + ", msisdn=" + msisdn + ", mnoCode="
+				+ mnoCode + ", contentVersion=" + contentVersion
+				+ ", serviceId=" + serviceId + ", serviceTitle=" + serviceTitle
+				+ ", smsId=" + smsId + ", themeId=" + themeId + ", themeTitle="
+				+ themeTitle + "]";
+	}
 }

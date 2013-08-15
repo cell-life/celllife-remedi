@@ -17,6 +17,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+/**
+ * Root Entity model for the USSD session data received. It contains information about each interaction with
+ * the USSD menu. 
+ * 
+ * This includes information about the session itself (the timestamps) and the user (msisdn), as well as the 
+ * content consumed (i.e. page viewed) by the user during the session. The data displayed to the user in this
+ * case is information about medical services, which are grouped by Theme. The user can opt to receive 
+ * an SMS containing the information about a particular service.
+ */
 @Entity
 @Cacheable
 public class Request implements Serializable {
@@ -30,6 +39,7 @@ public class Request implements Serializable {
 	@Embedded
 	@AttributeOverrides({
 			@AttributeOverride(name = "id", column = @Column(name = "ussdSessionId")),
+			@AttributeOverride(name = "string", column = @Column(name = "ussdSessionString")),
 			@AttributeOverride(name = "startDateTime", column = @Column(name = "ussdSessionStartDateTime")),
 			@AttributeOverride(name = "endDateTime", column = @Column(name = "ussdSessionEndDateTime")) })
 	private UssdSession ussdSession;
@@ -88,7 +98,6 @@ public class Request implements Serializable {
 	}
 
 	public void setThemes(List<Theme> themes) {
-		System.out.println("themes:" + themes + "," + themes.size());
 		this.themes = themes;
 	}
 

@@ -2,7 +2,7 @@ package org.celllife.remedi.domain.datamart;
 
 public class UssdThemeVisitsDTO {
 
-    private int themeId;
+    private String themeId;
 
     private String themeTitle;
 
@@ -12,7 +12,7 @@ public class UssdThemeVisitsDTO {
 
     }
 
-    public UssdThemeVisitsDTO(int themeId, String themeTitle, long themeVisits) {
+    public UssdThemeVisitsDTO(String themeId, String themeTitle, long themeVisits) {
         this.themeId = themeId;
         this.themeTitle = themeTitle;
         this.themeVisits = themeVisits;
@@ -26,11 +26,11 @@ public class UssdThemeVisitsDTO {
         this.themeVisits = themeVisits;
     }
 
-    public int getThemeId() {
+    public String getThemeId() {
         return themeId;
     }
 
-    public void setThemeId(int themeId) {
+    public void setThemeId(String themeId) {
         this.themeId = themeId;
     }
 

@@ -1,12 +1,12 @@
 package org.celllife.remedi.domain.datamart;
 
 
+import java.util.Collection;
+import java.util.Date;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
-
-import java.util.Collection;
-import java.util.Date;
 
 public interface UssdVisitsStoreRepository extends PagingAndSortingRepository<UssdPageVisit, String>  {
 
@@ -23,7 +23,7 @@ public interface UssdVisitsStoreRepository extends PagingAndSortingRepository<Us
             "and (themeId = :themeId) " +
             "and (serviceId is not null) " +
             "group by serviceId, themeId")
-    Collection<UssdServiceVisitsDTO> findTotalVisitsPerServiceInTheme(@Param("startDate") Date startDate, @Param("endDate") Date endDate, @Param("themeId") Integer themeId);
+    Collection<UssdServiceVisitsDTO> findTotalVisitsPerServiceInTheme(@Param("startDate") Date startDate, @Param("endDate") Date endDate, @Param("themeId") String themeId);
 
 
     @Query("select new org.celllife.remedi.domain.datamart.UssdThemeVisitsDTO(svc.themeId, svc.themeTitle, COUNT(themeId)) " +

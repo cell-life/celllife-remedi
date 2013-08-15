@@ -22,8 +22,8 @@ public class Sms implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	private Long serviceId;
-	private Long smsId;
+	private String serviceId;
+	private String smsId;
 	private String smsText;
 
 	@OneToOne
@@ -38,19 +38,19 @@ public class Sms implements Serializable {
 		this.id = id;
 	}
 
-	public Long getServiceId() {
+	public String getServiceId() {
 		return serviceId;
 	}
 
-	public void setServiceId(Long serviceId) {
+	public void setServiceId(String serviceId) {
 		this.serviceId = serviceId;
 	}
 
-	public Long getSmsId() {
+	public String getSmsId() {
 		return smsId;
 	}
 
-	public void setSmsId(Long smsId) {
+	public void setSmsId(String smsId) {
 		this.smsId = smsId;
 	}
 

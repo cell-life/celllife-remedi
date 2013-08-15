@@ -22,7 +22,7 @@ public class Service implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
-	private Long serviceId;
+	private String serviceId;
 	private String serviceTitle;
 	private String serviceDescription;
 
@@ -38,11 +38,11 @@ public class Service implements Serializable {
 		this.id = id;
 	}
 
-	public Long getServiceId() {
+	public String getServiceId() {
 		return serviceId;
 	}
 
-	public void setServiceId(Long serviceId) {
+	public void setServiceId(String serviceId) {
 		this.serviceId = serviceId;
 	}
 
@@ -51,7 +51,6 @@ public class Service implements Serializable {
 	}
 
 	public void setServiceTitle(String serviceTitle) {
-		System.out.println("service title=" + serviceTitle);
 		this.serviceTitle = serviceTitle;
 	}
 

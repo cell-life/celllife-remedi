@@ -1,5 +1,5 @@
 {
-    "RemediUssdSubmissionRequest": {
+    "remediUssdSubmissionRequest": {
         "ussdSession": {
             "id": "1",
             "string": "*130*555*1000#",

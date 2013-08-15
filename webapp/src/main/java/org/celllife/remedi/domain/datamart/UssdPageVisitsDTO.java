@@ -2,7 +2,7 @@ package org.celllife.remedi.domain.datamart;
 
 public class UssdPageVisitsDTO {
 
-    private int pageId;
+    private String pageId;
 
     private String pageTitle;
 
@@ -16,7 +16,7 @@ public class UssdPageVisitsDTO {
 
     }
 
-    public UssdPageVisitsDTO(int pageId, String pageTitle, long pageVisits, long smses, boolean isTheme) {
+    public UssdPageVisitsDTO(String pageId, String pageTitle, long pageVisits, long smses, boolean isTheme) {
         this.pageId = pageId;
         this.pageTitle = pageTitle;
         this.pageVisits = pageVisits;
@@ -40,11 +40,11 @@ public class UssdPageVisitsDTO {
         this.smses = smses;
     }
 
-    public int getPageId() {
+    public String getPageId() {
         return pageId;
     }
 
-    public void setPageId(int pageId) {
+    public void setPageId(String pageId) {
         this.pageId = pageId;
     }
 

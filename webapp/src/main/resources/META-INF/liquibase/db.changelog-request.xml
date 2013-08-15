@@ -8,8 +8,9 @@
             <column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="content_version" type="VARCHAR(255)"/>
-            <column name="ussd_session_id" type="VARCHAR(255)"/>
+            <column name="content_version" type="VARCHAR(63)"/>
+            <column name="ussd_session_id" type="VARCHAR(63)"/>
+            <column name="ussd_session_string" type="VARCHAR(63)"/>
             <column name="ussd_session_start_date_time" type="DATETIME"/>
             <column name="ussd_session_end_date_time" type="DATETIME"/>
             <column name="user_msisdn" type="VARCHAR(255)"/>
@@ -20,7 +21,7 @@
         	<column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="theme_id" type="BIGINT"/>
+            <column name="theme_id" type="VARCHAR(63)"/>
             <column name="theme_title" type="VARCHAR(255)"/>
             <column name="request" type="BIGINT"/>
         </createTable>
@@ -29,7 +30,7 @@
         	<column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="service_id" type="BIGINT"/>
+            <column name="service_id" type="VARCHAR(63)"/>
             <column name="service_title" type="VARCHAR(63)"/>
             <column name="service_description" type="VARCHAR(255)"/>
             <column name="theme" type="BIGINT"/>
@@ -39,8 +40,8 @@
         	<column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="service_id" type="BIGINT"/>
-            <column name="sms_id" type="BIGINT"/>
+            <column name="service_id" type="VARCHAR(63)"/>
+            <column name="sms_id" type="VARCHAR(63)"/>
             <column name="sms_text" type="VARCHAR(255)"/>
             <column name="request" type="BIGINT"/>
         </createTable>

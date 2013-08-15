@@ -42,71 +42,65 @@ public class UssdVisitsStoreRepositoryIntegrationTest {
             ussdVisitsStoreRepository.deleteAll();
 
             UssdPageVisit ussdVisit = new UssdPageVisit();
-            ussdVisit.setId("1");
             ussdVisit.setUssdSessionId("1");
             ussdVisit.setDate(new Date());
             ussdVisit.setMsisdn("27724194158");
-            ussdVisit.setContentVersion(1);
-            ussdVisit.setServiceId(1);
+            ussdVisit.setContentVersion("1");
+            ussdVisit.setServiceId("1");
             ussdVisit.setServiceTitle("smrtSex");
-            ussdVisit.setThemeId(1);
+            ussdVisit.setThemeId("1");
             ussdVisit.setThemeTitle("Sex & Family Planning");
             ussdVisitsStoreRepository.save(ussdVisit);
 
             UssdPageVisit ussdVisit2 = new UssdPageVisit();
-            ussdVisit2.setId("2");
             ussdVisit2.setUssdSessionId("2");
             ussdVisit2.setDate(new Date());
             ussdVisit2.setMsisdn("27724194158");
-            ussdVisit2.setContentVersion(1);
-            ussdVisit2.setServiceId(2);
+            ussdVisit2.setContentVersion("1");
+            ussdVisit2.setServiceId("2");
             ussdVisit2.setServiceTitle("iChooseWhen");
-            ussdVisit2.setThemeId(1);
+            ussdVisit2.setThemeId("1");
             ussdVisit2.setThemeTitle("Sex & Family Planning");
             ussdVisitsStoreRepository.save(ussdVisit2);
 
             UssdPageVisit ussdVisit3 = new UssdPageVisit();
-            ussdVisit3.setId("3");
             ussdVisit3.setUssdSessionId("3");
             ussdVisit3.setDate(new Date());
             ussdVisit3.setMsisdn("27724194158");
-            ussdVisit3.setContentVersion(1);
-            ussdVisit3.setServiceId(2);
+            ussdVisit3.setContentVersion("1");
+            ussdVisit3.setServiceId("2");
             ussdVisit3.setServiceTitle("iChooseWhen");
-            ussdVisit3.setThemeId(1);
+            ussdVisit3.setThemeId("1");
             ussdVisit3.setThemeTitle("Sex & Family Planning");
-            ussdVisit3.setSmsId(2);
+            ussdVisit3.setSmsId("2");
             ussdVisitsStoreRepository.save(ussdVisit3);
 
             UssdPageVisit ussdVisit5 = new UssdPageVisit();
-            ussdVisit5.setId("5");
             ussdVisit5.setUssdSessionId("5");
             ussdVisit5.setDate(new Date());
             ussdVisit5.setMsisdn("27724194158");
-            ussdVisit5.setContentVersion(1);
-            ussdVisit5.setThemeId(1);
+            ussdVisit5.setContentVersion("1");
+            ussdVisit5.setThemeId("1");
             ussdVisit5.setThemeTitle("Sex & Family Planning");
             ussdVisitsStoreRepository.save(ussdVisit5);
 
             UssdPageVisit ussdVisit4 = new UssdPageVisit();
-            ussdVisit4.setId("4");
             ussdVisit4.setUssdSessionId("4");
             ussdVisit4.setDate(new Date());
             ussdVisit4.setMsisdn("27724194158");
-            ussdVisit4.setContentVersion(1);
-            ussdVisit4.setServiceId(3);
+            ussdVisit4.setContentVersion("1");
+            ussdVisit4.setServiceId("3");
             ussdVisit4.setServiceTitle("BabyInfo");
-            ussdVisit4.setThemeId(2);
+            ussdVisit4.setThemeId("2");
             ussdVisit4.setThemeTitle("Pregnancy & Childcare");
             ussdVisitsStoreRepository.save(ussdVisit4);
 
             UssdPageVisit ussdVisit6 = new UssdPageVisit();
-            ussdVisit6.setId("6");
             ussdVisit6.setUssdSessionId("6");
             ussdVisit6.setDate(new Date());
             ussdVisit6.setMsisdn("27724194158");
-            ussdVisit6.setContentVersion(1);
-            ussdVisit6.setThemeId(2);
+            ussdVisit6.setContentVersion("1");
+            ussdVisit6.setThemeId("2");
             ussdVisit6.setThemeTitle("Pregnancy & Childcare");
             ussdVisitsStoreRepository.save(ussdVisit6);
         }
@@ -120,7 +114,7 @@ public class UssdVisitsStoreRepositoryIntegrationTest {
 
         @Test
         public void testFindTotalVisitsPerServiceInTheme() {
-            Collection<UssdServiceVisitsDTO> result = ussdVisitsStoreRepository.findTotalVisitsPerServiceInTheme(yesterday, new Date(), 1);
+            Collection<UssdServiceVisitsDTO> result = ussdVisitsStoreRepository.findTotalVisitsPerServiceInTheme(yesterday, new Date(), "1");
             Assert.assertEquals(2, result.size());
             Assert.assertNotNull(result.iterator().next().getServiceVisits());
         }

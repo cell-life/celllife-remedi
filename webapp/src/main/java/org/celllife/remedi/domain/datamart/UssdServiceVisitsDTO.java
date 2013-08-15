@@ -2,7 +2,7 @@ package org.celllife.remedi.domain.datamart;
 
 public class UssdServiceVisitsDTO {
 
-    private int serviceId;
+    private String serviceId;
 
     private String serviceTitle;
 
@@ -10,13 +10,13 @@ public class UssdServiceVisitsDTO {
 
     private long smses;
 
-    private int themeId;
+    private String themeId;
 
     protected UssdServiceVisitsDTO() {
 
     }
 
-    public UssdServiceVisitsDTO(int serviceId, String service, long serviceVisits, long smses, int themeId) {
+    public UssdServiceVisitsDTO(String serviceId, String service, long serviceVisits, long smses, String themeId) {
         this.serviceId = serviceId;
         this.serviceTitle = service;
         this.serviceVisits = serviceVisits;
@@ -40,11 +40,11 @@ public class UssdServiceVisitsDTO {
         this.smses = smses;
     }
 
-    public int getServiceId() {
+    public String getServiceId() {
         return serviceId;
     }
 
-    public void setServiceId(int serviceId) {
+    public void setServiceId(String serviceId) {
         this.serviceId = serviceId;
     }
 
@@ -56,11 +56,11 @@ public class UssdServiceVisitsDTO {
         this.serviceTitle = serviceTitle;
     }
 
-    public int getThemeId() {
+    public String getThemeId() {
         return themeId;
     }
 
-    public void setThemeId(int themeId) {
+    public void setThemeId(String themeId) {
         this.themeId = themeId;
     }
 

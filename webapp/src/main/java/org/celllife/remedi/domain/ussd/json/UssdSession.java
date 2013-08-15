@@ -1,32 +1,19 @@
-package org.celllife.remedi.domain.ussd;
+package org.celllife.remedi.domain.ussd.json;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Basic;
-import javax.persistence.Embeddable;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-/**
- * USSD Session entity for the USSD endpoint. Contains details about the session
- * (times)
- */
-@Embeddable
 public final class UssdSession implements Serializable {
 
-	private static final long serialVersionUID = 5766201813161201442L;
+	private static final long serialVersionUID = 1722308069217250867L;
 
 	private String id;
-	
-	@Basic
 	private String string;
-
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date startDateTime;
-
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date endDateTime;
+
+	public UssdSession() {
+	}
 
 	public String getId() {
 		return id;
@@ -34,6 +21,14 @@ public final class UssdSession implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getString() {
+		return string;
+	}
+
+	public void setString(String string) {
+		this.string = string;
 	}
 
 	public Date getStartDateTime() {
@@ -50,14 +45,6 @@ public final class UssdSession implements Serializable {
 
 	public void setEndDateTime(Date endDateTime) {
 		this.endDateTime = endDateTime;
-	}
-
-	public String getString() {
-		return string;
-	}
-
-	public void setString(String string) {
-		this.string = string;
 	}
 
 	@Override
