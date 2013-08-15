@@ -37,7 +37,7 @@
         <h2><img class="ohsc-logo" src="resources/img/logo.png"></h2>
     </div>
 
-    <h2>USSD Analysis Web Page</h2>
+    <h2>Remedi USSD Analysis Web Page</h2>
 
     <hr>
 
