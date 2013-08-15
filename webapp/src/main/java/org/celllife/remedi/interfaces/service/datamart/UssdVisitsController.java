@@ -1,6 +1,14 @@
 package org.celllife.remedi.interfaces.service.datamart;
 
-import au.com.bytecode.opencsv.CSVWriter;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.celllife.remedi.application.datamart.UssdVisitsApplicationService;
 import org.celllife.remedi.domain.datamart.UssdPageVisitsDTO;
 import org.slf4j.Logger;
@@ -14,15 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.supercsv.cellprocessor.Optional;
-import org.supercsv.cellprocessor.constraint.UniqueHashCode;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.util.*;
 
 @Controller
 public class UssdVisitsController {
@@ -65,10 +68,10 @@ public class UssdVisitsController {
 
             Collection<UssdPageVisitsDTO> ussdPageVisitsDTOs = ussdVisitsApplicationService.getUssdVisits(startDate, endDate);
 
-            final String[] header = new String[] { "pageTitle", "pageVisits", "smses" };
+            final String[] header = new String[] { "themeName", "serviceName", "pageVisits", "smses" };
             final CellProcessor[] processors = getProcessors();
             writer.writeHeader(header);
-            for( final UssdPageVisitsDTO ussdPageVisitsDTO : ussdPageVisitsDTOs ) {
+            for (final UssdPageVisitsDTO ussdPageVisitsDTO : ussdPageVisitsDTOs) {
                 writer.write(ussdPageVisitsDTO, header, processors);
             }
         } catch (IOException e) {
@@ -84,6 +87,7 @@ public class UssdVisitsController {
 
     private static CellProcessor[] getProcessors() {
         final CellProcessor[] processors = new CellProcessor[] {
+                new Optional(),
                 new Optional(),
                 new Optional(),
                 new Optional()

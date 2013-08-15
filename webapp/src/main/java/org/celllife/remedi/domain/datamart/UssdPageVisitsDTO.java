@@ -64,4 +64,17 @@ public class UssdPageVisitsDTO {
         isTheme = theme;
     }
 
+    public String getThemeName() {
+    	if (isTheme) {
+    		return pageTitle;
+    	}
+    	return "";
+    }
+    
+    public String getServiceName() {
+    	if (!isTheme) {
+    		return pageTitle;
+    	}
+    	return "";
+    }
 }
