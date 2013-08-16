@@ -38,21 +38,22 @@ public class UssdRequestApplicationServiceImpl implements UssdRequestApplication
 	List<UssdPageVisit> convertToUssdPageVisits(Request request) {
 		List<UssdPageVisit> pageVisits = new ArrayList<UssdPageVisit>();
 		for (Theme theme : request.getThemes()) {
+			UssdPageVisit themePageVisit = new UssdPageVisit(request.getUssdSession().getId(), request.getUssdSession().getStartDateTime(),
+					request.getUser().getMsisdn(), request.getUser().getMnoCode(), request.getContent().getVersion());
+			themePageVisit.setThemeId(theme.getThemeId());
+			themePageVisit.setThemeTitle(theme.getThemeTitle());
+			pageVisits.add(themePageVisit);
 			for (Service service : theme.getServices()) {
-				UssdPageVisit pageVisit = new UssdPageVisit();
-				pageVisit.setContentVersion(request.getContent().getVersion());
-				pageVisit.setUssdSessionId(request.getUssdSession().getId());
-				pageVisit.setMsisdn(request.getUser().getMsisdn());
-				pageVisit.setMnoCode(request.getUser().getMnoCode());
-				pageVisit.setDate(request.getUssdSession().getStartDateTime());
-				pageVisit.setThemeId(theme.getThemeId());
-				pageVisit.setThemeTitle(theme.getThemeTitle());
-				pageVisit.setServiceId(service.getServiceId());
-				pageVisit.setServiceTitle(service.getServiceTitle());
+				UssdPageVisit servicePageVisit = new UssdPageVisit(request.getUssdSession().getId(), request.getUssdSession().getStartDateTime(),
+						request.getUser().getMsisdn(), request.getUser().getMnoCode(), request.getContent().getVersion());
+				servicePageVisit.setThemeId(theme.getThemeId());
+				servicePageVisit.setThemeTitle(theme.getThemeTitle());
+				servicePageVisit.setServiceId(service.getServiceId());
+				servicePageVisit.setServiceTitle(service.getServiceTitle());
 				if (request.getSms() != null && service.getServiceId().equals(request.getSms().getServiceId())) {
-					pageVisit.setSmsId(request.getSms().getSmsId());
+					servicePageVisit.setSmsId(request.getSms().getSmsId());
 				}
-				pageVisits.add(pageVisit);
+				pageVisits.add(servicePageVisit);
 			}
 		}
 		return pageVisits;

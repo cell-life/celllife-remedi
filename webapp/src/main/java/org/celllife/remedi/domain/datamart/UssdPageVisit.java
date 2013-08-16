@@ -53,6 +53,15 @@ public class UssdPageVisit {
     public UssdPageVisit() {
 
     }
+    
+    public UssdPageVisit(String ussdSessionId, Date date, String msisdn, String mnoCode, String contentVersion) {
+    	super();
+    	setUssdSessionId(ussdSessionId);
+    	setDate(date);
+    	setMsisdn(msisdn);
+    	setMnoCode(mnoCode);
+    	setContentVersion(contentVersion);
+    }
 
     public String getUssdSessionId() {
         return ussdSessionId;
