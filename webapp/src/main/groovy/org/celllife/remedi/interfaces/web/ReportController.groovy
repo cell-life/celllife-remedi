@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
 
 import java.text.SimpleDateFormat
+import java.util.Calendar;
 
 import static org.celllife.remedi.framework.restclient.RESTClient.get
 
@@ -26,10 +27,18 @@ class ReportController {
     def getUssdVisits(@RequestParam(value = "startDate", required = false) String startDate, @RequestParam(value = "endDate", required = false) String endDate, Model model) {
 
         Date sd
-        if (startDate.equals(null))
-            sd = new Date(946684800) //This is Unix time for 01 Jan 2000
-        else
+        if (startDate.equals(null)){
+           	Calendar c = Calendar.getInstance()   // this takes current date
+        	c.set(Calendar.DAY_OF_MONTH, 1)
+        	c.set(Calendar.HOUR, 0)
+        	c.set(Calendar.MINUTE, 0)
+        	c.set(Calendar.SECOND, 0)
+        	c.set(Calendar.MILLISECOND, 0)
+        	sd = c.getTime()
+        }
+        else {
             sd = new SimpleDateFormat("dd/MM/yyyy").parse(startDate)
+        }
 
         Date ed
 
