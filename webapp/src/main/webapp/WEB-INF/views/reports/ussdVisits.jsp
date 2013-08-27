@@ -38,17 +38,18 @@
     </div>
 
     <h2>Remedi USSD Analysis Web Page</h2>
-
+    
     <hr>
-
+    
     <div class = "row">
 
-    <h3>Aggregated Data</h3>
+	<a href="https://www.google.com/analytics/web/#report/visitors-overview/a441477w73442667p75829877/">Redirect to Mobi Analysis Page on Google Analytics</a>
 
     <jsp:include page="../includes/datepicker.jsp">
         <jsp:param name="windowLocation" value="" />
     </jsp:include>
 
+	<h3>Aggregated Data</h3>
     <table class="table table-bordered" id="remediTable">
         <thead>
         <tr>
