@@ -20,7 +20,7 @@
     <script type="text/javascript" src="resources/js/jquery-1.8.2.js"></script> <!-- This is the version of jQuery that came with DataTables -->
     <script type="text/javascript" src="resources/js/bootstrap-3.0.0.min.js"></script>
     <script type="text/javascript" src="resources/js/jquery-ui-1.9.1.min.js"></script>
-    <script type="text/javascript" src="resources/js/jquery.dataTables-1.9.4.js"></script>
+    <script type="text/javascript" src="resources/js/jquery.dataTablHOes-1.9.4.js"></script>
     <script type="text/javascript" src="resources/js/datatables_bootstrap-3.js"></script>
 
 </head>
@@ -30,10 +30,12 @@
 <div class="container">
 
     <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="j_spring_cas_security_logout">Logout</a>
-        </ul>
+    	
+    	<div class="btn-toolbar pull-right">
+           <span class="totals" id="totals">Total Visits</span>
+           <a class="btn btn-primary" href="j_spring_cas_security_logout">Logout</a>
+     	</div>
+        
         <h2><img class="ohsc-logo" src="resources/img/logo.png"></h2>
     </div>
 
@@ -85,6 +87,16 @@
     </div>
 
 </div>
+<script>$.get
+("totalvisits",{},
+function(data) {
+	var totals = data.totalVisits;
+    $("#totals").html("Total Visits: " + totals);
+	}
+)
+</script>
+
+
 
 </body>
 </html>
