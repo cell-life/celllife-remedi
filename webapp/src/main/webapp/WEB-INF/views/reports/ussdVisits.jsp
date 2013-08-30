@@ -20,6 +20,7 @@
     <script type="text/javascript" src="resources/js/jquery-1.8.2.js"></script> <!-- This is the version of jQuery that came with DataTables -->
     <script type="text/javascript" src="resources/js/bootstrap-3.0.0.min.js"></script>
     <script type="text/javascript" src="resources/js/jquery-ui-1.9.1.min.js"></script>
+     <script type="text/javascript" src="resources/js/jquery.dataTables-1.9.4.js"></script>
     <script type="text/javascript" src="resources/js/jquery.dataTablHOes-1.9.4.js"></script>
     <script type="text/javascript" src="resources/js/datatables_bootstrap-3.js"></script>
 
