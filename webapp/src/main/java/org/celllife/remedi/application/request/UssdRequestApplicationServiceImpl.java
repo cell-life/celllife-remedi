@@ -26,13 +26,32 @@ public class UssdRequestApplicationServiceImpl implements UssdRequestApplication
 
 	@Override
 	public Request save(Request request) {
-		Request savedRequest = requestRepository.save(request);
-		List<UssdPageVisit> ussdPageVisits = convertToUssdPageVisits(savedRequest);
-		if (log.isTraceEnabled()) {
-			log.trace("converted Request into UssdPageVisits: "+ussdPageVisits);
+		Request savedRequest = null;
+		if (isDuplicate(request)) {
+			log.error("Cannot save request because it is a duplicate request="+request);
+		} else {
+			savedRequest = requestRepository.save(request);
+			List<UssdPageVisit> ussdPageVisits = convertToUssdPageVisits(savedRequest);
+			if (log.isTraceEnabled()) {
+				log.trace("converted Request into UssdPageVisits: "+ussdPageVisits);
+			}
+			ussdVisitsStoreRepository.save(ussdPageVisits);
 		}
-		ussdVisitsStoreRepository.save(ussdPageVisits);
 		return savedRequest;
+	}
+	
+	boolean isDuplicate(Request request) {
+		boolean duplicate = false;
+		try {
+			Iterable<Request> duplicateRequests = requestRepository.findByUssdSessionId(request.getUssdSession().getId());
+			if (duplicateRequests.iterator().hasNext()) {
+				duplicate = true;
+				System.out.println("duplicate "+request.getUssdSession().getId());
+			}
+		} catch (Exception e) {
+			log.warn("Could not find duplicate requests with ussd session id '"+request.getUssdSession().getId()+"' due to error '"+e.getMessage()+"'");
+		}
+		return duplicate;
 	}
 	
 	List<UssdPageVisit> convertToUssdPageVisits(Request request) {
