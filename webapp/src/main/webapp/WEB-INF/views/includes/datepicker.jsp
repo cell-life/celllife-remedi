@@ -1,25 +1,5 @@
 <script>
 
-    /* Table initialisation */
-    $(document).ready(function () {
-        $('#remediTable').dataTable({
-            "bSort": false,
-            "iDisplayLength": 50,
-            "sDom": 'lfr<"toolbar">tip'
-        });
-        $("div.toolbar").html('' +
-                '<form class="form-inline">' +
-                '<fieldset>' +
-                '<label>From:</label>' +
-                '<input id="date1" type="text" name="date1" value="${param.startDate}" onchange="fromDateSelected()" class="form-control form-remedi-date" /> ' +
-                '<label>To:</label>' +
-                '<input id="date2" type="text" name="date2" value="${param.endDate}" class="form-control form-remedi-date" />' +
-                '<button id="filter" type="button" class="btn btn-default" onclick="filterButtonClicked()">Apply</button>' +
-                '<button id="download" type="button" class="btn btn-primary pull-right" onclick="exportButtonClicked()">Export</button>' +
-                '</fieldset>' +
-                '</form>' );
-    });
-
     $(function () {
         $('#date1').datepicker({
             dateFormat: 'dd/mm/yy'
@@ -59,7 +39,7 @@
             $("#dateTooShortError").hide();
             $("#dateError").hide();
             $("#dateError").hide();
-            window.location = "reports/ussdVisits" + "?startDate=" + $('#date1').val() + "&endDate=" + $('#date2').val();
+            window.location = "<%= request.getParameter("windowLocation") %>" + "?startDate=" + $('#date1').val() + "&endDate=" + $('#date2').val();
         }
     }
 
@@ -73,6 +53,16 @@
             $("#dateTooShortError").hide();
             $("#dateError").hide();
             window.location = 'service/ussdVisits/csvFormat' + '?' + 'startDate=' + $("#date1").val() + '&endDate=' + $("#date2").val();
+        }
+    }
+    
+    function convertParamDate(param) {
+        if (param == null || param == '') {
+            return null;
+        } else {
+            var date = $.datepicker.parseDate("dd/mm/yy", param);
+            var strTime = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+            return strTime;
         }
     }
 

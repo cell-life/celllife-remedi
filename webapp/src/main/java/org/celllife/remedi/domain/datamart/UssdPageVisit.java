@@ -30,6 +30,10 @@ public class UssdPageVisit {
     @Temporal(TemporalType.TIMESTAMP)
     @Basic(optional=false)
     private Date date;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Basic(optional=false)
+    private Date endDate;
 
     @Basic(optional=false)
     private String msisdn;
@@ -54,10 +58,11 @@ public class UssdPageVisit {
 
     }
     
-    public UssdPageVisit(String ussdSessionId, Date date, String msisdn, String mnoCode, String contentVersion) {
+    public UssdPageVisit(String ussdSessionId, Date startDate, Date endDate, String msisdn, String mnoCode, String contentVersion) {
     	super();
     	setUssdSessionId(ussdSessionId);
-    	setDate(date);
+    	setStartDate(date);
+    	setEndDate(endDate);
     	setMsisdn(msisdn);
     	setMnoCode(mnoCode);
     	setContentVersion(contentVersion);
@@ -77,6 +82,22 @@ public class UssdPageVisit {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Date getStartDate() {
+        return date;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.date = startDate;
+    }
+
+    public Date getEndDate() {
+        return date;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public String getMsisdn() {
@@ -154,7 +175,7 @@ public class UssdPageVisit {
 	@Override
 	public String toString() {
 		return "UssdPageVisit [id=" + id + ", ussdSessionId=" + ussdSessionId
-				+ ", date=" + date + ", msisdn=" + msisdn + ", mnoCode="
+				+ ", startDate=" + date + ", endDate=" + endDate + ", msisdn=" + msisdn + ", mnoCode="
 				+ mnoCode + ", contentVersion=" + contentVersion
 				+ ", serviceId=" + serviceId + ", serviceTitle=" + serviceTitle
 				+ ", smsId=" + smsId + ", themeId=" + themeId + ", themeTitle="

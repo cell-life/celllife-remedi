@@ -20,5 +20,15 @@
             <column name="theme_title" type="VARCHAR(255)" />
         </createTable>
     </changeSet>
+    
+    <changeSet author="dagmar@cell-life.org" id="ussdpagevisit-2">
+    	<preConditions onFail="MARK_RAN">
+            <not><columnExists columnName="end_date" tableName="ussd_page_visit"></columnExists></not>
+        </preConditions>
+        <addColumn tableName="ussd_page_visit">
+        	<column name="end_date" type="DATETIME"/>
+    	</addColumn>
+    	<sql>UPDATE ussd_page_visit SET end_date = date where end_date = null</sql>
+    </changeSet>
 
 </databaseChangeLog>

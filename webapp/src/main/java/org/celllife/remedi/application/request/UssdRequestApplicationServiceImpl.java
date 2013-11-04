@@ -57,13 +57,15 @@ public class UssdRequestApplicationServiceImpl implements UssdRequestApplication
 	List<UssdPageVisit> convertToUssdPageVisits(Request request) {
 		List<UssdPageVisit> pageVisits = new ArrayList<UssdPageVisit>();
 		for (Theme theme : request.getThemes()) {
-			UssdPageVisit themePageVisit = new UssdPageVisit(request.getUssdSession().getId(), request.getUssdSession().getStartDateTime(),
+			UssdPageVisit themePageVisit = new UssdPageVisit(request.getUssdSession().getId(), 
+					request.getUssdSession().getStartDateTime(), request.getUssdSession().getEndDateTime(),
 					request.getUser().getMsisdn(), request.getUser().getMnoCode(), request.getContent().getVersion());
 			themePageVisit.setThemeId(theme.getThemeId());
 			themePageVisit.setThemeTitle(theme.getThemeTitle());
 			pageVisits.add(themePageVisit);
 			for (Service service : theme.getServices()) {
-				UssdPageVisit servicePageVisit = new UssdPageVisit(request.getUssdSession().getId(), request.getUssdSession().getStartDateTime(),
+				UssdPageVisit servicePageVisit = new UssdPageVisit(request.getUssdSession().getId(), 
+						request.getUssdSession().getStartDateTime(), request.getUssdSession().getEndDateTime(),
 						request.getUser().getMsisdn(), request.getUser().getMnoCode(), request.getContent().getVersion());
 				servicePageVisit.setThemeId(theme.getThemeId());
 				servicePageVisit.setThemeTitle(theme.getThemeTitle());

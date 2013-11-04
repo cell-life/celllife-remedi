@@ -20,8 +20,7 @@
     <script type="text/javascript" src="resources/js/jquery-1.8.2.js"></script> <!-- This is the version of jQuery that came with DataTables -->
     <script type="text/javascript" src="resources/js/bootstrap-3.0.0.min.js"></script>
     <script type="text/javascript" src="resources/js/jquery-ui-1.9.1.min.js"></script>
-     <script type="text/javascript" src="resources/js/jquery.dataTables-1.9.4.js"></script>
-    <script type="text/javascript" src="resources/js/jquery.dataTablHOes-1.9.4.js"></script>
+    <script type="text/javascript" src="resources/js/jquery.dataTables-1.9.4.js"></script>
     <script type="text/javascript" src="resources/js/datatables_bootstrap-3.js"></script>
 
 </head>
@@ -30,26 +29,32 @@
 
 <div class="container">
 
-    <div class="masthead">
-    	
-    	<div class="btn-toolbar pull-right">
-           <span class="totals" id="totals">Total Visits</span>
-           <a class="btn btn-primary" href="j_spring_cas_security_logout">Logout</a>
-     	</div>
-        
-        <h2><img class="ohsc-logo" src="resources/img/logo.png"></h2>
-    </div>
-
-    <h2>Remedi USSD Analysis Web Page</h2>
-    
-    <hr>
-    
-    <div class = "row">
-
-	<a href="https://www.google.com/analytics/web/#report/visitors-overview/a441477w73442667p75829877/">Redirect to Mobi Analysis Page on Google Analytics</a>
+	<jsp:include page="../includes/header.jsp" />
+	
+	<script>
+    /* Table initialisation */
+    $(document).ready(function () {
+        $('#remediTable').dataTable({
+            "bSort": false,
+            "iDisplayLength": 50,
+            "sDom": 'lfr<"toolbar">tip'
+        });
+        $("div.toolbar").html('' +
+                '<form class="form-inline">' +
+                '<fieldset>' +
+                '<label>From:</label>' +
+                '<input id="date1" type="text" name="date1" value="${param.startDate}" onchange="fromDateSelected()" class="form-control form-remedi-date" /> ' +
+                '<label>To:</label>' +
+                '<input id="date2" type="text" name="date2" value="${param.endDate}" class="form-control form-remedi-date" />' +
+                '<button id="filter" type="button" class="btn btn-default" onclick="filterButtonClicked()">Apply</button>' +
+                '<button id="download" type="button" class="btn btn-primary pull-right" onclick="exportButtonClicked()">Export</button>' +
+                '</fieldset>' +
+                '</form>' );
+    });
+	</script>
 
     <jsp:include page="../includes/datepicker.jsp">
-        <jsp:param name="windowLocation" value="" />
+        <jsp:param name="windowLocation" value="reports/ussdVisits" />
     </jsp:include>
 
 	<h3>Aggregated Data</h3>
@@ -81,23 +86,9 @@
 
     </div>
 
-    <hr>
-
-    <div class="footer">
-        <p>&copy; Cell-Life (NPO) - 2013</p>
-    </div>
+    <jsp:include page="../includes/footer.jsp" />
 
 </div>
-<script>$.get
-("totalvisits",{},
-function(data) {
-	var totals = data.totalVisits;
-    $("#totals").html("Total Visits: " + totals);
-	}
-)
-</script>
-
-
 
 </body>
 </html>
