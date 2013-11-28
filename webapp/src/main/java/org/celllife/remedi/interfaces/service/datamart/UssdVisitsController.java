@@ -40,7 +40,9 @@ public class UssdVisitsController {
             value = "/service/ussdVisits",
             method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Collection<UssdPageVisitsDTO> findUssdVisits(@RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate) {
+    public Collection<UssdPageVisitsDTO> findUssdVisits(
+    		@RequestParam("startDate") @DateTimeFormat(pattern="dd/MM/yyyy") Date startDate, 
+    		@RequestParam("endDate")  @DateTimeFormat(pattern="dd/MM/yyyy") Date endDate) {
 
         return ussdVisitsApplicationService.getUssdVisits(startDate, endDate);
 

@@ -52,7 +52,7 @@
         else {
             $("#dateTooShortError").hide();
             $("#dateError").hide();
-            window.location = 'service/ussdVisits/csvFormat' + '?' + 'startDate=' + $("#date1").val() + '&endDate=' + $("#date2").val();
+            window.location = "<%= request.getParameter("csvUrl")%>" + '?' + 'startDate=' + $("#date1").val() + '&endDate=' + $("#date2").val();
         }
     }
     

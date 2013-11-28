@@ -61,7 +61,7 @@ public class UssdPageVisit {
     public UssdPageVisit(String ussdSessionId, Date startDate, Date endDate, String msisdn, String mnoCode, String contentVersion) {
     	super();
     	setUssdSessionId(ussdSessionId);
-    	setStartDate(date);
+    	setStartDate(startDate);
     	setEndDate(endDate);
     	setMsisdn(msisdn);
     	setMnoCode(mnoCode);

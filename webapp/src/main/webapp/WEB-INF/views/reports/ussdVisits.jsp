@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,7 +27,6 @@
 </head>
 
 <body>
-
 <div class="container">
 
 	<jsp:include page="../includes/header.jsp" />
@@ -49,12 +49,13 @@
                 '<button id="filter" type="button" class="btn btn-default" onclick="filterButtonClicked()">Apply</button>' +
                 '<button id="download" type="button" class="btn btn-primary pull-right" onclick="exportButtonClicked()">Export</button>' +
                 '</fieldset>' +
-                '</form>' );
+                '</form>' ); 
     });
 	</script>
 
     <jsp:include page="../includes/datepicker.jsp">
         <jsp:param name="windowLocation" value="reports/ussdVisits" />
+        <jsp:param name="csvUrl" value="service/ussdVisits/csvFormat" />
     </jsp:include>
 
 	<h3>Aggregated Data</h3>
@@ -71,11 +72,12 @@
         <c:forEach items="${visits}" var="visit">
         <c:if test="${visit.theme == true}">
             <tr style="background-color:#e9e9e9;font-weight:bold">
+            	<td><a href="reports/msisdnVisits?startDate=<fmt:formatDate value="${startDate}" pattern="dd/MM/yyyy"/>&endDate=<fmt:formatDate value="${endDate}" pattern="dd/MM/yyyy"/>&themeId=${visit.pageId}&themeName=${visit.pageTitle}">${visit.pageTitle}</a></td>
         </c:if>
         <c:if test="${visit.theme == false}">
             <tr>
+            <td><a href="reports/msisdnVisits?startDate<fmt:formatDate value="${startDate}" pattern="dd/MM/yyyy"/>&endDate=<fmt:formatDate value="${endDate}" pattern="dd/MM/yyyy"/>&serviceId=${visit.pageId}&serviceName=${visit.pageTitle}">${visit.pageTitle}</a></td>
         </c:if>
-                <td>${visit.pageTitle}</td>
                 <td>${visit.pageVisits}</td>
                 <td>${visit.smses}</td>
             </tr>

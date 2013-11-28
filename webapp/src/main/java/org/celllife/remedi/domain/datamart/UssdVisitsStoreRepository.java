@@ -3,6 +3,7 @@ package org.celllife.remedi.domain.datamart;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -71,4 +72,23 @@ public interface UssdVisitsStoreRepository extends PagingAndSortingRepository<Us
             "where (ups.date between :startDate and :endDate) " +
             " and ups.msisdn like ('%' || :msisdn || '%')")
     Page<MsisdnVisitsDTO> findMsisdnVisitsByMsisdn(@Param("startDate") Date startDate, @Param("endDate") Date endDate, @Param("msisdn") String msisdn, Pageable p);
+	
+	@Query("select new org.celllife.remedi.domain.datamart.MsisdnVisitsDTO(ups.ussdSessionId, ups.date, ups.endDate, ups.msisdn, ups.mnoCode)  " +
+            "from UssdPageVisit ups " +
+            "where (date between :startDate and :endDate) ")
+    List<MsisdnVisitsDTO> findMsisdnVisits(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+	
+	@Query("select new org.celllife.remedi.domain.datamart.MsisdnVisitsDTO(ups.ussdSessionId, ups.date, ups.endDate, ups.msisdn, ups.mnoCode)  " +
+            "from UssdPageVisit ups " +
+            "where (ups.date between :startDate and :endDate) " +
+            " and ups.serviceId = :serviceId ")
+    List<MsisdnVisitsDTO> findMsisdnVisitsByService(@Param("startDate") Date startDate, @Param("endDate") Date endDate, @Param("serviceId") String serviceId);
+	
+	@Query("select new org.celllife.remedi.domain.datamart.MsisdnVisitsDTO(ups.ussdSessionId, ups.date, ups.endDate, ups.msisdn, ups.mnoCode)  " +
+            "from UssdPageVisit ups " +
+            "where (ups.date between :startDate and :endDate) " +
+            " and ups.themeId = :themeId ")
+    List<MsisdnVisitsDTO> findMsisdnVisitsByTheme(@Param("startDate") Date startDate, @Param("endDate") Date endDate, @Param("themeId") String themeId);
+
+	
 }

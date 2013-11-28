@@ -160,7 +160,6 @@ public class UssdVisitsApplicationServiceImpl implements UssdVisitsApplicationSe
 		while (it.hasNext()) {
 			MsisdnVisitsDTO dto = it.next();
 			String mobileNetwork = (dto.getMobileNetwork() == null ? "" : dto.getMobileNetwork().getDescription());
-			if (mobileNetwork == null)
 			aaData[row] = new Object[] { 
 					dto.getUssdSessionId(),
 					new SimpleDateFormat("dd MMM yyyy").format(dto.getStart()),
@@ -173,5 +172,22 @@ public class UssdVisitsApplicationServiceImpl implements UssdVisitsApplicationSe
 		}
 		pageDTO.setAaData(aaData);
 		return pageDTO;
+	}
+
+	@Override
+	public List<MsisdnVisitsDTO>  getMsisdnVisits(Date startDate, Date endDate) {
+		return ussdVisitsStoreRepository.findMsisdnVisits(startDate, endDate);
+	}
+
+	@Override
+	public List<MsisdnVisitsDTO> getMsisdnVisitsByService(Date startDate,
+			Date endDate, String serviceId, String serviceName) {
+		return ussdVisitsStoreRepository.findMsisdnVisitsByService(startDate, endDate, serviceId);
+	}
+
+	@Override
+	public List<MsisdnVisitsDTO> getMsisdnVisitsByTheme(Date startDate,
+			Date endDate, String themeId, String themeName) {
+		return ussdVisitsStoreRepository.findMsisdnVisitsByTheme(startDate, endDate, themeId);
 	}
 }

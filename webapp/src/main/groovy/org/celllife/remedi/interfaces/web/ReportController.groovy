@@ -32,11 +32,13 @@ class ReportController {
 
         Date sd = getStartDate(startDate)
         Date ed = getEndDate(endDate)
+        model.put("startDate",sd)
+        model.put("endDate",ed)
 
         if (sd > ed) {
             throw new Exception("Error: The \"From\" date must be earlier than the \"To\" date.")
         } else {
-            def visits = get("${externalBaseUrl}/service/ussdVisits", [startDate: sd.format("MM/dd/yy hh:mm aa"), endDate: ed.format("MM/dd/yy hh:mm aa")])
+            def visits = get("${externalBaseUrl}/service/ussdVisits", [startDate: sd.format("dd/MM/yyyy"), endDate: ed.format("dd/MM/yyyy")])
             model.put("visits", visits)
             return "reports/ussdVisits";
         }
@@ -45,7 +47,11 @@ class ReportController {
 	@RequestMapping(value="/reports/msisdnVisits", method = RequestMethod.GET)
 	def getMsisdnVisits(
 		@RequestParam(value = "startDate", required = false) @DateTimeFormat(pattern="dd/MM/yyyy") String startDate, 
-		@RequestParam(value = "endDate", required = false) @DateTimeFormat(pattern="dd/MM/yyyy") String endDate, 
+		@RequestParam(value = "endDate", required = false) @DateTimeFormat(pattern="dd/MM/yyyy") String endDate,
+		@RequestParam(value="serviceId",required=false) String serviceId, 
+		@RequestParam(value="serviceName",required=false) String serviceName,
+		@RequestParam(value="themeId",required=false) String themeId,
+		@RequestParam(value="themeName",required=false) String themeName, 
 		Model model) {
 
 		Date sd = getStartDate(startDate)

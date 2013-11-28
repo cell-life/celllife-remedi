@@ -70,14 +70,15 @@
 
     <jsp:include page="../includes/datepicker.jsp">
         <jsp:param name="windowLocation" value="reports/msisdnVisits" />
+        <jsp:param name="csvUrl" value="service/msisdnVisits/csvFormat" />
     </jsp:include>
 
-	<h3>Aggregated Data</h3>
+	<h3>Report of Msisdn Details</h3>
     <table class="table table-bordered" id="remediTable">
         <thead>
         <tr>
-            <th>USSD Session ID</th>
-            <th>Date</th>
+            <th>USSD ID</th>
+            <th>Session Date</th>
             <th>Start Time</th>
             <th>Duration</th>
             <th>Mobile Number</th>
