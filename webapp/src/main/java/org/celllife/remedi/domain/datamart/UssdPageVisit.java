@@ -93,7 +93,7 @@ public class UssdPageVisit {
     }
 
     public Date getEndDate() {
-        return date;
+        return endDate;
     }
 
     public void setEndDate(Date endDate) {
